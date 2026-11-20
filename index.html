@@ -7,13 +7,10 @@
   <style>
     :root {
       --bg-dark: #070605;
-      --card-surface: rgba(16, 13, 9, 0.90);
-      --border-soft: rgba(250, 204, 21, 0.24);
       --gold: #facc15;
-      --amber: #f59e0b;
       --wa-green: #16a34a;
       --text-main: #fffbeb;
-      --text-muted: #e7dec8;
+      --text-muted: #d6cbb8;
     }
 
     * {
@@ -25,7 +22,8 @@
 
     html, body {
       min-height: 100%;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 400;
       color: var(--text-main);
       background-color: var(--bg-dark);
     }
@@ -61,9 +59,9 @@
       padding: 0 12px 135px;
     }
 
-    /* FRANJA SUPERIOR AMARILLA Y NEGRA */
+    /* FRANJA SUPERIOR */
     .top-pattern-bar {
-      height: 12px;
+      height: 10px;
       margin: 0 -12px 8px;
       background:
         repeating-linear-gradient(
@@ -72,16 +70,8 @@
           var(--gold) 7px,
           #14110f 7px,
           #14110f 14px
-        ),
-        repeating-linear-gradient(
-          45deg,
-          rgba(250, 204, 21, 0.55) 0px,
-          rgba(250, 204, 21, 0.55) 7px,
-          transparent 7px,
-          transparent 14px
         );
-      background-blend-mode: screen;
-      border-bottom: 1px solid rgba(250, 204, 21, 0.35);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.3);
     }
 
     /* HEADER */
@@ -96,18 +86,18 @@
     .logo-slot {
       flex: 1;
       max-width: 245px;
-      height: 58px;
+      height: 56px;
       display: flex;
       align-items: center;
       justify-content: flex-start;
     }
 
     .logo-slot img {
-      max-height: 58px;
+      max-height: 56px;
       max-width: 100%;
       width: auto;
       object-fit: contain;
-      border-radius: 12px;
+      border-radius: 0;
       filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.85));
     }
 
@@ -116,12 +106,13 @@
       align-items: center;
       gap: 8px;
       padding: 6px 12px;
-      border-radius: 14px;
-      border: 1px solid rgba(250, 204, 21, 0.5);
-      background: rgba(250, 204, 21, 0.12);
+      border-radius: 2px;
+      border: 1px solid rgba(250, 204, 21, 0.45);
+      background: rgba(250, 204, 21, 0.1);
       color: var(--gold);
-      font-size: 11.5px;
-      font-weight: 800;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
     }
 
     .header-right {
@@ -132,55 +123,45 @@
 
     .loc-info {
       text-align: right;
-      font-size: 11px;
+      font-size: 10.5px;
       line-height: 1.25;
       padding-right: 8px;
-      border-right: 1px solid rgba(250, 204, 21, 0.35);
+      border-right: 1px solid rgba(250, 204, 21, 0.3);
     }
 
     .loc-city {
       color: #fffbeb;
-      font-weight: 700;
+      font-weight: 400;
       display: block;
     }
 
     .loc-hours {
       color: #4ade80;
-      font-weight: 600;
-      font-size: 10.5px;
+      font-weight: 400;
+      font-size: 10px;
     }
 
     .user-admin-btn {
-      width: 38px;
-      height: 38px;
-      border-radius: 999px;
-      background: rgba(250, 204, 21, 0.14);
-      border: 1px solid rgba(250, 204, 21, 0.55);
+      width: 36px;
+      height: 36px;
+      border-radius: 4px;
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.5);
       color: var(--gold);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      box-shadow: 0 0 12px rgba(250, 204, 21, 0.18);
-      transition: transform 0.15s ease, background 0.15s ease;
-    }
-
-    .user-admin-btn:active {
-      transform: scale(0.94);
-      background: var(--gold);
-      color: #141008;
     }
 
     /* BANNER PROMOCIÓN DEL DÍA */
     .hero-banner {
       position: relative;
-      border-radius: 22px;
+      border-radius: 0;
       overflow: hidden;
       aspect-ratio: 16 / 10;
       max-height: 255px;
       width: 100%;
-      border: 1px solid rgba(250, 204, 21, 0.38);
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.65);
       cursor: pointer;
       margin-bottom: 12px;
       background: #140f0a;
@@ -190,7 +171,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 22px;
+      border-radius: 0;
       display: block;
     }
 
@@ -204,63 +185,62 @@
 
     .hero-kicker {
       display: inline-block;
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.14em;
+      font-size: 9.5px;
+      font-weight: 400;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--gold);
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 0 14px rgba(0, 0, 0, 0.9);
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
       margin-bottom: 2px;
     }
 
     .hero-heading {
-      font-size: 22px;
-      font-weight: 900;
-      line-height: 1.05;
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
       color: #ffffff;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95), 0 0 18px rgba(0, 0, 0, 0.9);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
     }
 
     .hero-offer {
       display: inline-block;
-      margin-top: 5px;
-      font-size: 15px;
-      font-weight: 900;
+      margin-top: 4px;
+      font-size: 14px;
+      font-weight: 400;
       color: var(--gold);
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.98), 0 0 16px rgba(0, 0, 0, 0.95);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.98);
     }
 
     .hero-dots {
       position: absolute;
       bottom: 8px;
-      left: 50%;
-      transform: translateX(-50%);
+      right: 12px;
       display: flex;
-      gap: 6px;
+      gap: 5px;
       z-index: 2;
     }
 
     .hero-dots span {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 0;
       background: rgba(255, 255, 255, 0.45);
     }
 
     .hero-dots span.active {
       background: var(--gold);
-      width: 16px;
-      border-radius: 999px;
+      width: 14px;
     }
 
-    /* BOTONES DE CATEGORÍA AMARILLOS */
+    /* BOTONES DE CATEGORÍA */
     .category-bar {
       display: flex;
       gap: 8px;
       overflow-x: auto;
       padding: 4px 0 12px;
       scrollbar-width: none;
-      border-bottom: 1px solid rgba(250, 204, 21, 0.25);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.22);
       margin-bottom: 14px;
     }
 
@@ -272,26 +252,26 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 14px;
-      border-radius: 999px;
+      padding: 7px 13px;
+      border-radius: 3px;
       border: 1px solid rgba(250, 204, 21, 0.35);
       background: rgba(20, 15, 9, 0.85);
       color: var(--gold);
-      font-size: 12.5px;
-      font-weight: 700;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.03em;
       white-space: nowrap;
       cursor: pointer;
-      transition: all 0.18s ease;
     }
 
     .cat-btn.active {
       background: var(--gold);
       color: #141008;
       border-color: var(--gold);
-      box-shadow: 0 0 14px rgba(250, 204, 21, 0.4);
+      font-weight: 500;
     }
 
-    /* CUADRÍCULA 2 PRODUCTOS POR FILA CON IMÁGENES REDONDEADAS */
+    /* CUADRÍCULA 2 PRODUCTOS POR FILA: SOLO IMAGEN RECTA SIN MARCO */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -300,26 +280,20 @@
 
     .dish-card {
       position: relative;
-      aspect-ratio: 1 / 1.08;
-      border-radius: 22px;
+      aspect-ratio: 1 / 1.06;
+      border-radius: 0;
+      border: none;
       overflow: hidden;
-      background: var(--card-surface);
-      border: 1px solid var(--border-soft);
+      background: transparent;
       cursor: pointer;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.55);
-      transition: transform 0.16s ease, border-color 0.16s ease;
-    }
-
-    .dish-card:active {
-      transform: scale(0.98);
-      border-color: var(--gold);
     }
 
     .dish-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 22px;
+      border-radius: 0;
+      border: none;
       display: block;
     }
 
@@ -327,12 +301,11 @@
       content: "";
       position: absolute;
       inset: 0;
-      border-radius: 22px;
       background: linear-gradient(
         180deg,
-        rgba(8, 6, 4, 0.03) 44%,
-        rgba(8, 6, 4, 0.78) 76%,
-        rgba(8, 6, 4, 0.96) 100%
+        transparent 52%,
+        rgba(7, 6, 5, 0.72) 82%,
+        rgba(7, 6, 5, 0.92) 100%
       );
       pointer-events: none;
     }
@@ -343,20 +316,21 @@
       right: 0;
       bottom: 0;
       z-index: 2;
-      padding: 10px 12px;
+      padding: 8px 10px;
     }
 
     .dish-name {
-      font-size: 14px;
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.01em;
       color: #ffffff;
-      line-height: 1.15;
+      line-height: 1.2;
       margin-bottom: 2px;
     }
 
     .dish-price {
-      font-size: 15px;
-      font-weight: 900;
+      font-size: 13.5px;
+      font-weight: 400;
       color: var(--gold);
     }
 
@@ -364,15 +338,15 @@
     .info-strip {
       margin-top: 18px;
       padding: 12px 8px;
-      border-top: 1px solid rgba(250, 204, 21, 0.35);
-      border-bottom: 1px solid rgba(250, 204, 21, 0.35);
-      background: rgba(14, 10, 6, 0.72);
-      border-radius: 18px;
+      border-top: 1px solid rgba(250, 204, 21, 0.3);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.3);
+      background: rgba(14, 10, 6, 0.65);
+      border-radius: 0;
       display: grid;
       grid-template-columns: 1.15fr 0.85fr 1fr;
       align-items: center;
       gap: 6px;
-      font-size: 10.5px;
+      font-size: 10px;
     }
 
     .info-col {
@@ -383,35 +357,36 @@
     }
 
     .info-col:not(:last-child) {
-      border-right: 1px solid rgba(250, 204, 21, 0.3);
+      border-right: 1px solid rgba(250, 204, 21, 0.25);
     }
 
     .info-icon {
-      font-size: 16px;
+      font-size: 15px;
       color: var(--gold);
       flex-shrink: 0;
     }
 
     .info-title {
-      font-weight: 800;
+      font-weight: 500;
       color: var(--gold);
-      font-size: 11px;
+      font-size: 10.5px;
       display: block;
     }
 
     .info-sub {
       color: var(--text-muted);
-      font-size: 9.8px;
-      line-height: 1.2;
+      font-size: 9.5px;
+      line-height: 1.25;
+      font-weight: 400;
     }
 
     .quality-badge {
       text-align: center;
       font-style: italic;
-      font-weight: 900;
+      font-weight: 400;
       color: var(--gold);
-      font-size: 12px;
-      line-height: 1.15;
+      font-size: 11.5px;
+      line-height: 1.2;
     }
 
     /* BARRA INFERIOR FLOTANTE */
@@ -429,8 +404,8 @@
       margin: 0 auto;
       background: rgba(14, 11, 8, 0.94);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(250, 204, 21, 0.42);
-      border-radius: 24px;
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      border-radius: 4px;
       padding: 8px 10px 8px 14px;
       display: flex;
       align-items: center;
@@ -443,21 +418,22 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 12.5px;
+      font-size: 12px;
+      font-weight: 400;
       cursor: pointer;
     }
 
     .cart-divider-v {
       width: 1px;
-      height: 28px;
-      background: rgba(250, 204, 21, 0.35);
+      height: 26px;
+      background: rgba(250, 204, 21, 0.3);
     }
 
     .wa-order-btn {
       background: var(--wa-green);
       color: #ffffff;
-      border: 1px solid rgba(74, 222, 128, 0.35);
-      border-radius: 18px;
+      border: none;
+      border-radius: 4px;
       padding: 8px 13px;
       display: flex;
       align-items: center;
@@ -469,24 +445,25 @@
 
     .wa-order-btn strong {
       display: block;
-      font-size: 12.5px;
-      font-weight: 800;
-      line-height: 1.1;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.15;
     }
 
     .wa-order-btn small {
-      font-size: 11px;
+      font-size: 10.5px;
+      font-weight: 400;
       color: #dcfce7;
     }
 
     .expand-cart-btn {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: rgba(250, 204, 21, 0.12);
-      border: 1px solid rgba(250, 204, 21, 0.35);
+      width: 30px;
+      height: 30px;
+      border-radius: 4px;
+      background: rgba(250, 204, 21, 0.1);
+      border: 1px solid rgba(250, 204, 21, 0.3);
       color: var(--gold);
-      font-size: 14px;
+      font-size: 13px;
       cursor: pointer;
       flex-shrink: 0;
     }
@@ -514,12 +491,11 @@
       height: 92vh;
       max-height: 820px;
       background: #120d08;
-      border: 1px solid rgba(250, 204, 21, 0.42);
-      border-radius: 26px;
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      border-radius: 4px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.92);
     }
 
     .detail-top-bar {
@@ -531,21 +507,21 @@
     }
 
     .detail-cat-label {
-      font-size: 11.5px;
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.16em;
       color: var(--gold);
-      font-weight: 800;
+      font-weight: 400;
     }
 
     .close-circle {
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(250, 204, 21, 0.12);
+      width: 32px;
+      height: 32px;
+      border-radius: 4px;
+      background: rgba(250, 204, 21, 0.1);
       border: 1px solid rgba(250, 204, 21, 0.3);
       color: var(--gold);
-      font-size: 20px;
+      font-size: 18px;
       cursor: pointer;
     }
 
@@ -557,9 +533,7 @@
       scrollbar-width: none;
       flex: 1;
       min-height: 270px;
-      padding: 10px 12px 0;
-      gap: 10px;
-      background: #0b0805;
+      background: #090705;
     }
 
     .carousel-track::-webkit-scrollbar {
@@ -571,30 +545,27 @@
       width: 100%;
       height: 100%;
       scroll-snap-align: center;
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid rgba(250, 204, 21, 0.28);
     }
 
     .carousel-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 22px;
+      border-radius: 0;
       display: block;
     }
 
     .carousel-indicators {
       display: flex;
       justify-content: center;
-      gap: 7px;
-      padding: 10px 0 6px;
+      gap: 6px;
+      padding: 8px 0 4px;
     }
 
     .ind-dot {
       width: 8px;
-      height: 8px;
-      border-radius: 50%;
+      height: 4px;
+      border-radius: 0;
       background: rgba(255, 255, 255, 0.25);
       border: none;
       cursor: pointer;
@@ -602,14 +573,13 @@
 
     .ind-dot.active {
       background: var(--gold);
-      width: 20px;
-      border-radius: 999px;
+      width: 18px;
     }
 
     .detail-body {
       padding: 10px 18px 20px;
       background: #15100a;
-      border-top: 1px solid rgba(250, 204, 21, 0.24);
+      border-top: 1px solid rgba(250, 204, 21, 0.2);
     }
 
     .detail-title-row {
@@ -621,35 +591,37 @@
     }
 
     .detail-title {
-      font-size: 20px;
-      font-weight: 800;
+      font-size: 19px;
+      font-weight: 500;
       color: #ffffff;
     }
 
     .detail-price {
-      font-size: 19px;
-      font-weight: 900;
+      font-size: 18px;
+      font-weight: 400;
       color: var(--gold);
       white-space: nowrap;
     }
 
     .detail-desc {
-      font-size: 13px;
+      font-size: 12.5px;
+      font-weight: 400;
       color: var(--text-muted);
       line-height: 1.4;
       margin-bottom: 14px;
     }
 
     .qty-box {
-      background: rgba(250, 204, 21, 0.05);
-      border: 1px solid rgba(250, 204, 21, 0.24);
-      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(250, 204, 21, 0.22);
+      border-radius: 4px;
       padding: 12px;
       margin-bottom: 12px;
     }
 
     .qty-box-label {
-      font-size: 12px;
+      font-size: 11.5px;
+      font-weight: 400;
       color: #fffbeb;
       margin-bottom: 8px;
       display: flex;
@@ -664,13 +636,13 @@
     }
 
     .taco-option-btn {
-      background: rgba(250, 204, 21, 0.14);
-      border: 1px solid rgba(250, 204, 21, 0.5);
+      background: rgba(250, 204, 21, 0.1);
+      border: 1px solid rgba(250, 204, 21, 0.45);
       color: var(--gold);
-      padding: 9px 10px;
-      border-radius: 14px;
-      font-size: 12.5px;
-      font-weight: 800;
+      padding: 8px 10px;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 400;
       cursor: pointer;
     }
 
@@ -682,20 +654,20 @@
     }
 
     .step-btn {
-      width: 42px;
-      height: 42px;
-      border-radius: 14px;
-      border: 1px solid rgba(250, 204, 21, 0.45);
-      background: rgba(250, 204, 21, 0.12);
+      width: 40px;
+      height: 40px;
+      border-radius: 3px;
+      border: 1px solid rgba(250, 204, 21, 0.4);
+      background: rgba(250, 204, 21, 0.1);
       color: var(--gold);
-      font-size: 20px;
-      font-weight: 800;
+      font-size: 18px;
+      font-weight: 400;
       cursor: pointer;
     }
 
     .step-count {
-      font-size: 15px;
-      font-weight: 800;
+      font-size: 14px;
+      font-weight: 400;
       text-align: center;
       color: #fffbeb;
     }
@@ -705,10 +677,11 @@
       background: var(--gold);
       color: #141008;
       border: none;
-      border-radius: 16px;
-      padding: 14px;
-      font-size: 15px;
-      font-weight: 900;
+      border-radius: 4px;
+      padding: 13px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
       cursor: pointer;
     }
 
@@ -734,8 +707,8 @@
       max-height: 90vh;
       overflow-y: auto;
       background: #120d08;
-      border-top: 1px solid rgba(250, 204, 21, 0.42);
-      border-radius: 26px 26px 0 0;
+      border-top: 1px solid rgba(250, 204, 21, 0.38);
+      border-radius: 4px 4px 0 0;
       padding: 20px 18px 28px;
     }
 
@@ -746,15 +719,20 @@
       margin-bottom: 14px;
     }
 
+    .sheet-head h3 {
+      font-weight: 500;
+      font-size: 16px;
+    }
+
     .folio-pill {
       display: inline-block;
-      background: rgba(250, 204, 21, 0.16);
-      border: 1px solid rgba(250, 204, 21, 0.5);
+      background: rgba(250, 204, 21, 0.14);
+      border: 1px solid rgba(250, 204, 21, 0.45);
       color: var(--gold);
-      font-size: 12px;
-      font-weight: 800;
-      padding: 4px 12px;
-      border-radius: 999px;
+      font-size: 11.5px;
+      font-weight: 400;
+      padding: 4px 10px;
+      border-radius: 3px;
       margin-bottom: 12px;
     }
 
@@ -764,7 +742,8 @@
 
     .form-field label {
       display: block;
-      font-size: 11.5px;
+      font-size: 11px;
+      font-weight: 400;
       color: var(--text-muted);
       margin-bottom: 4px;
     }
@@ -773,10 +752,11 @@
       width: 100%;
       background: rgba(255, 255, 255, 0.06);
       border: 1px solid rgba(250, 204, 21, 0.24);
-      border-radius: 14px;
-      padding: 10px 12px;
+      border-radius: 3px;
+      padding: 9px 11px;
       color: #fff;
-      font-size: 13.5px;
+      font-size: 13px;
+      font-weight: 400;
       outline: none;
     }
 
@@ -787,17 +767,17 @@
     .btn-action {
       width: 100%;
       border: none;
-      border-radius: 14px;
-      padding: 12px;
-      font-size: 13.5px;
-      font-weight: 800;
+      border-radius: 3px;
+      padding: 11px;
+      font-size: 13px;
+      font-weight: 500;
       cursor: pointer;
       margin-top: 6px;
     }
 
     .btn-gps {
-      background: rgba(250, 204, 21, 0.14);
-      border: 1px solid rgba(250, 204, 21, 0.45);
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.4);
       color: var(--gold);
     }
 
@@ -808,7 +788,7 @@
 
     .btn-wa-copy {
       background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(250, 204, 21, 0.28);
+      border: 1px solid rgba(250, 204, 21, 0.25);
       color: #fffbeb;
     }
 
@@ -818,21 +798,21 @@
     }
 
     .btn-outline-gold {
-      background: rgba(250, 204, 21, 0.12);
-      border: 1px solid rgba(250, 204, 21, 0.45);
+      background: rgba(250, 204, 21, 0.1);
+      border: 1px solid rgba(250, 204, 21, 0.4);
       color: var(--gold);
     }
 
     .btn-del {
-      background: rgba(220, 38, 38, 0.18);
+      background: rgba(220, 38, 38, 0.16);
       border: 1px solid rgba(248, 113, 113, 0.4);
       color: #fecaca;
     }
 
     .admin-card {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(250, 204, 21, 0.22);
-      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(250, 204, 21, 0.2);
+      border-radius: 4px;
       padding: 12px;
       margin-bottom: 12px;
     }
@@ -846,12 +826,12 @@
 
     .promo-slot-btn {
       padding: 8px 6px;
-      border-radius: 12px;
-      border: 1px solid rgba(250, 204, 21, 0.35);
+      border-radius: 3px;
+      border: 1px solid rgba(250, 204, 21, 0.3);
       background: rgba(255, 255, 255, 0.04);
       color: var(--text-muted);
-      font-size: 11.5px;
-      font-weight: 700;
+      font-size: 11px;
+      font-weight: 400;
       cursor: pointer;
     }
 
@@ -859,6 +839,7 @@
       background: var(--gold);
       color: #141008;
       border-color: var(--gold);
+      font-weight: 500;
     }
 
     .thumbs-strip {
@@ -872,26 +853,27 @@
       position: relative;
       width: 58px;
       height: 58px;
-      border-radius: 12px;
+      border-radius: 0;
       overflow: hidden;
-      border: 1px solid rgba(250, 204, 21, 0.4);
+      border: 1px solid rgba(250, 204, 21, 0.35);
     }
 
     .thumb-chip img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 0;
     }
 
     .thumb-remove {
       position: absolute;
-      top: 2px;
-      right: 2px;
+      top: 0;
+      right: 0;
       width: 18px;
       height: 18px;
-      border-radius: 50%;
+      border-radius: 0;
       border: none;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       color: #fff;
       font-size: 11px;
       line-height: 1;
@@ -911,9 +893,9 @@
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(250, 204, 21, 0.15);
       padding: 10px 12px;
-      border-radius: 14px;
+      border-radius: 3px;
       margin-bottom: 8px;
-      font-size: 13px;
+      font-size: 12.5px;
     }
   </style>
 </head>
@@ -932,18 +914,17 @@
           onerror="toggleLogo(false)"
         />
         <div class="logo-placeholder-box" id="mainLogoPlaceholder">
-          <span>🔥</span>
-          <span>LOGO</span>
+          <span>EL TIZONCITO</span>
         </div>
       </div>
 
       <div class="header-right">
         <div class="loc-info">
-          <span class="loc-city">📍 Zacatepec, Mor.</span>
+          <span class="loc-city">Zacatepec, Mor.</span>
           <span class="loc-hours">Abierto hasta 1:00 am</span>
         </div>
         <button class="user-admin-btn" type="button" onclick="askAdminPassword()" title="Acceso administrador" aria-label="Acceso administrador">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z"/>
           </svg>
         </button>
@@ -972,14 +953,14 @@
 
     <!-- BOTONES DE CATEGORÍA FUNCIONALES -->
     <nav class="category-bar" id="categoryBar">
-      <button class="cat-btn active" type="button" data-cat="Tacos">🌮 Tacos</button>
-      <button class="cat-btn" type="button" data-cat="Especialidades">⭐ Especialidades</button>
-      <button class="cat-btn" type="button" data-cat="Kilos">⚖️ Kilos</button>
-      <button class="cat-btn" type="button" data-cat="Postres">🧁 Postres</button>
-      <button class="cat-btn" type="button" data-cat="Bebidas">🥤 Bebidas</button>
+      <button class="cat-btn active" type="button" data-cat="Tacos">Tacos</button>
+      <button class="cat-btn" type="button" data-cat="Especialidades">Especialidades</button>
+      <button class="cat-btn" type="button" data-cat="Kilos">Kilos</button>
+      <button class="cat-btn" type="button" data-cat="Postres">Postres</button>
+      <button class="cat-btn" type="button" data-cat="Bebidas">Bebidas</button>
     </nav>
 
-    <!-- PRODUCTOS (2 POR FILA, REDONDEADOS, SIN BOTÓN + EN LA TARJETA) -->
+    <!-- PRODUCTOS (2 POR FILA, RECTOS SIN MARCO) -->
     <main class="menu-grid" id="menuGrid"></main>
 
     <!-- INFORMACIÓN DE HORARIO, UBICACIÓN Y CALIDAD -->
@@ -999,7 +980,7 @@
         </div>
       </div>
       <div class="info-col" style="justify-content:center;">
-        <div class="quality-badge">Calidad y Sabor<br>¡Siempre!</div>
+        <div class="quality-badge">Calidad y Sabor<br>Siempre</div>
       </div>
     </section>
   </div>
@@ -1008,14 +989,14 @@
   <div class="floating-cart-wrap">
     <div class="floating-cart-bar">
       <div class="cart-left" onclick="openCheckout()">
-        <span style="font-size:18px;color:var(--gold);">🛒</span>
-        <span><strong id="barItems">Pedido • 0 artículos</strong> • <strong id="barTotal" style="color:var(--gold);">$0</strong></span>
+        <span>🛒</span>
+        <span><span id="barItems">Pedido • 0 artículos</span> • <span id="barTotal" style="color:var(--gold);">$0</span></span>
       </div>
 
       <div class="cart-divider-v"></div>
 
       <button class="wa-order-btn" type="button" onclick="openCheckout()">
-        <span style="font-size:19px;">💬</span>
+        <span style="font-size:18px;">💬</span>
         <span>
           <strong>Pedir por WhatsApp</strong>
           <small>734 132 58 27</small>
@@ -1047,7 +1028,7 @@
         <div class="qty-box">
           <div class="qty-box-label">
             <span id="qtyModeHint">Cantidad a agregar:</span>
-            <strong id="detailSubtotal" style="color:var(--gold);">Subtotal: $0</strong>
+            <span id="detailSubtotal" style="color:var(--gold);">Subtotal: $0</span>
           </div>
 
           <div class="taco-quick-buttons" id="tacoOptionsRow" style="display:none;">
@@ -1088,7 +1069,7 @@
       <div class="form-field">
         <label>Ubicación en Google Maps</label>
         <button class="btn-action btn-gps" type="button" onclick="getMapsLocation()">
-          📍 Obtener ubicación GPS (Google Maps)
+          Obtener ubicación GPS (Google Maps)
         </button>
         <input type="text" id="waMapsUrl" class="input-dark" style="margin-top:6px;" placeholder="Enlace de Google Maps" />
         <div id="mapsFeedback" style="font-size:11px;color:#4ade80;margin-top:4px;"></div>
@@ -1119,9 +1100,9 @@
 
       <!-- LOGO SUPERIOR -->
       <div class="admin-card">
-        <strong style="color:var(--gold);display:block;margin-bottom:8px;">Logo Superior</strong>
+        <span style="color:var(--gold);display:block;margin-bottom:8px;font-size:12.5px;">Logo Superior</span>
         <div class="form-field">
-          <label>Subir archivo de logo</label>
+          <label>Subir archivo de logo (se comprime automáticamente)</label>
           <input type="file" accept="image/*" class="input-dark" onchange="uploadLogoFile(this)" />
         </div>
         <div class="form-field">
@@ -1133,12 +1114,12 @@
 
       <!-- 3 OPCIONES DE PROMOCIÓN PARA DIFERENTES DÍAS -->
       <div class="admin-card">
-        <strong style="color:var(--gold);display:block;margin-bottom:8px;">Ofertas del Día (3 Días / Opciones)</strong>
+        <span style="color:var(--gold);display:block;margin-bottom:8px;font-size:12.5px;">Ofertas del Día (3 Días / Opciones)</span>
 
         <div class="promo-slot-tabs" id="promoSlotTabs">
-          <button class="promo-slot-btn active" type="button" onclick="selectPromoSlot(0)">Día / Opción 1</button>
-          <button class="promo-slot-btn" type="button" onclick="selectPromoSlot(1)">Día / Opción 2</button>
-          <button class="promo-slot-btn" type="button" onclick="selectPromoSlot(2)">Día / Opción 3</button>
+          <button class="promo-slot-btn active" type="button" onclick="selectPromoSlot(0)">Opción 1</button>
+          <button class="promo-slot-btn" type="button" onclick="selectPromoSlot(1)">Opción 2</button>
+          <button class="promo-slot-btn" type="button" onclick="selectPromoSlot(2)">Opción 3</button>
         </div>
 
         <div class="grid-2">
@@ -1175,12 +1156,12 @@
         </div>
 
         <button class="btn-action btn-gold" type="button" onclick="saveCurrentPromoSlot()">Guardar esta Promoción</button>
-        <button class="btn-action btn-outline-gold" type="button" onclick="activateCurrentPromoSlot()">★ Mostrar esta Promoción en el Banner</button>
+        <button class="btn-action btn-outline-gold" type="button" onclick="activateCurrentPromoSlot()">Mostrar esta Promoción en el Banner</button>
       </div>
 
       <!-- AGREGAR PRODUCTO -->
       <div class="admin-card">
-        <strong style="color:var(--gold);display:block;margin-bottom:8px;">Nuevo Platillo</strong>
+        <span style="color:var(--gold);display:block;margin-bottom:8px;font-size:12.5px;">Nuevo Platillo</span>
         <div class="grid-2">
           <div class="form-field">
             <label>Nombre</label>
@@ -1218,8 +1199,8 @@
         <button class="btn-action btn-gold" type="button" onclick="createNewDish()">+ Guardar Platillo</button>
       </div>
 
-      <!-- EDITAR PRODUCTOS EXISTENTES CON AGREGAR IMÁGENES -->
-      <strong style="display:block;margin-bottom:8px;color:var(--gold);">Editar Platillos Existentes</strong>
+      <!-- EDITAR PRODUCTOS EXISTENTES -->
+      <span style="display:block;margin-bottom:8px;color:var(--gold);font-size:12.5px;">Editar Platillos Existentes</span>
       <div id="adminDishesContainer"></div>
 
       <button class="btn-action btn-del" type="button" onclick="resetAllDefaults()">Restaurar valores iniciales</button>
@@ -1344,6 +1325,42 @@
     let detailQty = 1;
     let detailUnitMode = false;
 
+    // Comprimir imagen desde galería para que quepa en localStorage sin fallar
+    function compressImageFile(file, maxWidth = 720, quality = 0.72) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const img = new Image();
+          img.onload = () => {
+            const scale = Math.min(1, maxWidth / img.width);
+            const canvas = document.createElement("canvas");
+            canvas.width = Math.round(img.width * scale);
+            canvas.height = Math.round(img.height * scale);
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            resolve(canvas.toDataURL("image/jpeg", quality));
+          };
+          img.onerror = reject;
+          img.src = ev.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function persistAll() {
+      try {
+        localStorage.setItem("tz_logo_path", logoPath);
+        localStorage.setItem("tz_promos_3", JSON.stringify(promosList));
+        localStorage.setItem("tz_active_promo_idx", String(activePromoIndex));
+        localStorage.setItem("tz_dishes_cfg", JSON.stringify(dishes));
+        return true;
+      } catch (err) {
+        alert("El almacenamiento del navegador está lleno por las fotos subidas. Quita alguna foto pesada o usa nombre de archivo/URL.");
+        return false;
+      }
+    }
+
     function getActivePromo() {
       return promosList[activePromoIndex] || promosList[0];
     }
@@ -1377,7 +1394,7 @@
       const list = dishes.filter(d => d.category === selectedCategory);
 
       if (!list.length) {
-        grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:20px;font-size:13px;">No hay productos en esta categoría.</p>`;
+        grid.innerHTML = `<p style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:20px;font-size:12.5px;">No hay productos en esta categoría.</p>`;
         return;
       }
 
@@ -1466,13 +1483,13 @@
 
     function scrollCarouselTo(index) {
       const track = document.getElementById("carouselTrack");
-      track.scrollTo({ left: index * (track.clientWidth + 10), behavior: "smooth" });
+      track.scrollTo({ left: index * track.clientWidth, behavior: "smooth" });
     }
 
     function syncCarouselDots() {
       const track = document.getElementById("carouselTrack");
       if (!track.clientWidth) return;
-      const idx = Math.round(track.scrollLeft / (track.clientWidth + 10));
+      const idx = Math.round(track.scrollLeft / track.clientWidth);
       document.querySelectorAll("#carouselDots .ind-dot").forEach((dot, i) => {
         dot.classList.toggle("active", i === idx);
       });
@@ -1581,13 +1598,13 @@
     function renderCheckoutCart() {
       const wrap = document.getElementById("checkoutCartList");
       if (!cart.length) {
-        wrap.innerHTML = `<p style="color:var(--text-muted);font-size:13px;margin-bottom:12px;">Toca cualquier platillo o la promoción para agregarlo a tu pedido.</p>`;
+        wrap.innerHTML = `<p style="color:var(--text-muted);font-size:12.5px;margin-bottom:12px;">Toca cualquier platillo o la promoción para agregarlo a tu pedido.</p>`;
         return;
       }
       wrap.innerHTML = cart.map((item, idx) => `
         <div class="cart-row">
           <div>
-            <strong>${item.name}</strong><br>
+            <span>${item.name}</span><br>
             <small style="color:var(--text-muted);">${item.qty} x $${item.price} = $${item.qty * item.price}</small>
           </div>
           <div style="display:flex;gap:6px;align-items:center;">
@@ -1681,13 +1698,6 @@
       }
     }
 
-    function persistAll() {
-      localStorage.setItem("tz_logo_path", logoPath);
-      localStorage.setItem("tz_promos_3", JSON.stringify(promosList));
-      localStorage.setItem("tz_active_promo_idx", String(activePromoIndex));
-      localStorage.setItem("tz_dishes_cfg", JSON.stringify(dishes));
-    }
-
     function openAdminSheet() {
       document.getElementById("adminLogoUrl").value = logoPath;
       editingPromoSlot = activePromoIndex;
@@ -1736,24 +1746,23 @@
       slot.images.splice(imgIdx, 1);
       document.getElementById("adminPromoGallery").value = slot.images.join(", ");
       renderPromoThumbs(slot.images);
+      persistAll();
+      if (editingPromoSlot === activePromoIndex) renderPromoBanner();
     }
 
-    function addPromoFiles(input) {
+    async function addPromoFiles(input) {
       const files = Array.from(input.files || []);
       if (!files.length) return;
-      Promise.all(files.map(file => new Promise(res => {
-        const r = new FileReader();
-        r.onload = e => res(e.target.result);
-        r.readAsDataURL(file);
-      }))).then(added => {
-        const slot = promosList[editingPromoSlot];
-        const typed = document.getElementById("adminPromoGallery").value
-          .split(",").map(s => s.trim()).filter(Boolean);
-        slot.images = typed.concat(added);
-        document.getElementById("adminPromoGallery").value = slot.images.join(", ");
-        renderPromoThumbs(slot.images);
-        input.value = "";
-      });
+      const compressed = await Promise.all(files.map(f => compressImageFile(f, 760, 0.72)));
+      const slot = promosList[editingPromoSlot];
+      const typed = document.getElementById("adminPromoGallery").value
+        .split(",").map(s => s.trim()).filter(Boolean);
+      slot.images = typed.concat(compressed);
+      document.getElementById("adminPromoGallery").value = slot.images.join(", ");
+      renderPromoThumbs(slot.images);
+      persistAll();
+      if (editingPromoSlot === activePromoIndex) renderPromoBanner();
+      input.value = "";
     }
 
     function saveCurrentPromoSlot() {
@@ -1768,41 +1777,47 @@
       slot.description = document.getElementById("adminPromoDesc").value.trim() || "";
       slot.images = typedImgs.length ? typedImgs : ["promo.jpg"];
 
-      persistAll();
-      if (editingPromoSlot === activePromoIndex) {
-        renderPromoBanner();
+      if (persistAll()) {
+        if (editingPromoSlot === activePromoIndex) renderPromoBanner();
+        renderPromoThumbs(slot.images);
+        alert(`Opción de promoción ${editingPromoSlot + 1} guardada.`);
       }
-      renderPromoThumbs(slot.images);
-      alert(`Opción de promoción ${editingPromoSlot + 1} guardada.`);
     }
 
     function activateCurrentPromoSlot() {
-      saveCurrentPromoSlot();
+      const slot = promosList[editingPromoSlot];
+      const typedImgs = document.getElementById("adminPromoGallery").value
+        .split(",").map(s => s.trim()).filter(Boolean);
+      slot.kicker = document.getElementById("adminPromoKicker").value.trim() || "PROMOCIÓN DEL DÍA";
+      slot.price = Number(document.getElementById("adminPromoPrice").value) || 60;
+      slot.title = document.getElementById("adminPromoTitle").value.trim() || "Promoción";
+      slot.offer = document.getElementById("adminPromoOffer").value.trim() || "";
+      slot.description = document.getElementById("adminPromoDesc").value.trim() || "";
+      slot.images = typedImgs.length ? typedImgs : ["promo.jpg"];
       activePromoIndex = editingPromoSlot;
-      persistAll();
-      loadPromoSlotIntoForm(editingPromoSlot);
-      renderPromoBanner();
-      alert(`La Opción ${editingPromoSlot + 1} ahora se muestra como oferta principal.`);
+
+      if (persistAll()) {
+        loadPromoSlotIntoForm(editingPromoSlot);
+        renderPromoBanner();
+        alert(`La Opción ${editingPromoSlot + 1} ahora se muestra como oferta principal.`);
+      }
     }
 
-    function uploadLogoFile(input) {
+    async function uploadLogoFile(input) {
       const f = input.files && input.files[0];
       if (!f) return;
-      const r = new FileReader();
-      r.onload = e => {
-        document.getElementById("adminLogoUrl").value = e.target.result;
-      };
-      r.readAsDataURL(f);
+      const compressed = await compressImageFile(f, 450, 0.82);
+      document.getElementById("adminLogoUrl").value = compressed;
     }
 
     function saveAdminLogo() {
       logoPath = document.getElementById("adminLogoUrl").value.trim() || "logo.png";
-      persistAll();
-      renderHeaderLogo();
-      alert("Logo guardado.");
+      if (persistAll()) {
+        renderHeaderLogo();
+        alert("Logo guardado.");
+      }
     }
 
-    // EDITAR PLATILLOS: SUBIR FOTOS DIRECTO + MINIATURAS
     function renderAdminDishes() {
       const box = document.getElementById("adminDishesContainer");
       box.innerHTML = dishes.map(d => {
@@ -1852,34 +1867,32 @@
       }).join("");
     }
 
-    function uploadImagesToDish(dishId, input) {
+    async function uploadImagesToDish(dishId, input) {
       const files = Array.from(input.files || []);
       if (!files.length) return;
       const dish = dishes.find(d => d.id === dishId);
       if (!dish) return;
 
-      Promise.all(files.map(file => new Promise(res => {
-        const r = new FileReader();
-        r.onload = e => res(e.target.result);
-        r.readAsDataURL(file);
-      }))).then(addedImgs => {
-        const currentText = (document.getElementById(`dImgs_${dishId}`)?.value || "")
-          .split(",").map(s => s.trim()).filter(Boolean);
-        dish.images = currentText.concat(addedImgs);
-        persistAll();
+      const addedImgs = await Promise.all(files.map(f => compressImageFile(f, 700, 0.72)));
+      const currentText = (document.getElementById(`dImgs_${dishId}`)?.value || "")
+        .split(",").map(s => s.trim()).filter(Boolean);
+      dish.images = currentText.concat(addedImgs);
+
+      if (persistAll()) {
         renderAdminDishes();
         renderMenuGrid();
-        input.value = "";
-      });
+      }
+      input.value = "";
     }
 
     function removeDishImage(dishId, imgIdx) {
       const dish = dishes.find(d => d.id === dishId);
       if (!dish) return;
       dish.images.splice(imgIdx, 1);
-      persistAll();
-      renderAdminDishes();
-      renderMenuGrid();
+      if (persistAll()) {
+        renderAdminDishes();
+        renderMenuGrid();
+      }
     }
 
     function saveDishEdit(id) {
@@ -1891,19 +1904,22 @@
       dishes[idx].category = document.getElementById(`dCat_${id}`).value;
       const imgs = document.getElementById(`dImgs_${id}`).value.split(",").map(s => s.trim()).filter(Boolean);
       if (imgs.length) dishes[idx].images = imgs;
-      persistAll();
-      renderMenuGrid();
-      alert("Platillo guardado.");
+
+      if (persistAll()) {
+        renderMenuGrid();
+        alert("Platillo guardado.");
+      }
     }
 
     function removeDish(id) {
       dishes = dishes.filter(d => d.id !== id);
-      persistAll();
-      renderAdminDishes();
-      renderMenuGrid();
+      if (persistAll()) {
+        renderAdminDishes();
+        renderMenuGrid();
+      }
     }
 
-    function createNewDish() {
+    async function createNewDish() {
       const name = document.getElementById("newDishName").value.trim();
       const price = Number(document.getElementById("newDishPrice").value);
       const description = document.getElementById("newDishDesc").value.trim();
@@ -1916,18 +1932,25 @@
         return;
       }
 
-      const finishCreate = (finalImgs) => {
-        const nextId = dishes.length ? Math.max(...dishes.map(x => x.id)) + 1 : 1;
-        dishes.push({
-          id: nextId,
-          name,
-          price,
-          unitPrice: Math.max(10, Math.round(price / 5)),
-          category,
-          description,
-          images: finalImgs.length ? finalImgs : [FALLBACK_FOOD]
-        });
-        persistAll();
+      let finalImgs = [...typedImgs];
+      const files = Array.from(fileInput.files || []);
+      if (files.length) {
+        const uploaded = await Promise.all(files.map(f => compressImageFile(f, 700, 0.72)));
+        finalImgs = finalImgs.concat(uploaded);
+      }
+
+      const nextId = dishes.length ? Math.max(...dishes.map(x => x.id)) + 1 : 1;
+      dishes.push({
+        id: nextId,
+        name,
+        price,
+        unitPrice: Math.max(10, Math.round(price / 5)),
+        category,
+        description,
+        images: finalImgs.length ? finalImgs : [FALLBACK_FOOD]
+      });
+
+      if (persistAll()) {
         document.getElementById("newDishName").value = "";
         document.getElementById("newDishPrice").value = "";
         document.getElementById("newDishDesc").value = "";
@@ -1936,17 +1959,6 @@
         renderAdminDishes();
         renderMenuGrid();
         alert("Platillo agregado.");
-      };
-
-      const files = Array.from(fileInput.files || []);
-      if (files.length) {
-        Promise.all(files.map(file => new Promise(res => {
-          const r = new FileReader();
-          r.onload = e => res(e.target.result);
-          r.readAsDataURL(file);
-        }))).then(uploaded => finishCreate(typedImgs.concat(uploaded)));
-      } else {
-        finishCreate(typedImgs);
       }
     }
 
@@ -1956,11 +1968,12 @@
       promosList = JSON.parse(JSON.stringify(INITIAL_PROMOS));
       activePromoIndex = 0;
       dishes = JSON.parse(JSON.stringify(INITIAL_DISHES));
-      persistAll();
-      renderHeaderLogo();
-      renderPromoBanner();
-      renderMenuGrid();
-      openAdminSheet();
+      if (persistAll()) {
+        renderHeaderLogo();
+        renderPromoBanner();
+        renderMenuGrid();
+        openAdminSheet();
+      }
     }
 
     function closeSheet(id) {
