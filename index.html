@@ -7,13 +7,13 @@
   <style>
     :root {
       --bg-dark: #070605;
-      --card-surface: rgba(14, 12, 10, 0.88);
-      --border-soft: rgba(255, 210, 120, 0.16);
+      --card-surface: rgba(16, 13, 9, 0.90);
+      --border-soft: rgba(250, 204, 21, 0.24);
       --gold: #facc15;
       --amber: #f59e0b;
       --wa-green: #16a34a;
       --text-main: #fffbeb;
-      --text-muted: #d6cbb8;
+      --text-muted: #e7dec8;
     }
 
     * {
@@ -37,7 +37,7 @@
       inset: 0;
       z-index: -2;
       background-image:
-        linear-gradient(180deg, rgba(10, 7, 4, 0.78) 0%, rgba(18, 11, 6, 0.72) 50%, rgba(8, 5, 3, 0.86) 100%),
+        linear-gradient(180deg, rgba(10, 7, 4, 0.78) 0%, rgba(20, 13, 6, 0.72) 50%, rgba(8, 5, 3, 0.86) 100%),
         repeating-linear-gradient(
           90deg,
           rgba(58, 34, 16, 0.28) 0px,
@@ -47,9 +47,9 @@
         ),
         repeating-linear-gradient(
           180deg,
-          rgba(255, 190, 110, 0.025) 0px,
+          rgba(250, 204, 21, 0.025) 0px,
           rgba(0, 0, 0, 0.22) 3px,
-          rgba(255, 190, 110, 0.02) 6px
+          rgba(250, 204, 21, 0.02) 6px
         );
       background-attachment: fixed;
       pointer-events: none;
@@ -61,7 +61,7 @@
       padding: 0 12px 135px;
     }
 
-    /* FRANJA SUPERIOR CON PATRÓN GEOMÉTRICO */
+    /* FRANJA SUPERIOR AMARILLA Y NEGRA */
     .top-pattern-bar {
       height: 12px;
       margin: 0 -12px 8px;
@@ -81,10 +81,10 @@
           transparent 14px
         );
       background-blend-mode: screen;
-      border-bottom: 1px solid rgba(250, 204, 21, 0.25);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.35);
     }
 
-    /* HEADER SIN LETRAS EXTRA DEL NOMBRE (SOLO LOGO) */
+    /* HEADER: LOGO A LA IZQUIERDA, UBICACIÓN Y MUÑEQUITO DE USUARIO A LA DERECHA */
     .topbar {
       display: flex;
       align-items: center;
@@ -107,6 +107,7 @@
       max-width: 100%;
       width: auto;
       object-fit: contain;
+      border-radius: 12px;
       filter: drop-shadow(0 3px 10px rgba(0, 0, 0, 0.85));
     }
 
@@ -114,13 +115,13 @@
       display: none;
       align-items: center;
       gap: 8px;
-      padding: 6px 10px;
-      border-radius: 12px;
-      border: 1px dashed rgba(250, 204, 21, 0.45);
-      background: rgba(20, 14, 8, 0.75);
+      padding: 6px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(250, 204, 21, 0.5);
+      background: rgba(250, 204, 21, 0.12);
       color: var(--gold);
-      font-size: 11px;
-      font-weight: 700;
+      font-size: 11.5px;
+      font-weight: 800;
     }
 
     .header-right {
@@ -134,12 +135,12 @@
       font-size: 11px;
       line-height: 1.25;
       padding-right: 8px;
-      border-right: 1px solid rgba(250, 204, 21, 0.28);
+      border-right: 1px solid rgba(250, 204, 21, 0.35);
     }
 
     .loc-city {
       color: #fffbeb;
-      font-weight: 600;
+      font-weight: 700;
       display: block;
     }
 
@@ -149,29 +150,36 @@
       font-size: 10.5px;
     }
 
-    .menu-trigger-btn {
-      background: transparent;
-      border: 1px solid rgba(250, 204, 21, 0.22);
+    .user-admin-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      background: rgba(250, 204, 21, 0.14);
+      border: 1px solid rgba(250, 204, 21, 0.55);
       color: var(--gold);
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      font-size: 19px;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      box-shadow: 0 0 12px rgba(250, 204, 21, 0.18);
+      transition: transform 0.15s ease, background 0.15s ease;
     }
 
-    /* BANNER PROMOCIÓN DEL DÍA (FOTO COMPLETA SIN FONDO NEGRO DIFUMINADOR) */
+    .user-admin-btn:active {
+      transform: scale(0.94);
+      background: var(--gold);
+      color: #141008;
+    }
+
+    /* BANNER PROMOCIÓN DEL DÍA (FOTO COMPLETA REDONDEADA SIN FONDO NEGRO DIFUMINADO) */
     .hero-banner {
       position: relative;
-      border-radius: 16px;
+      border-radius: 22px;
       overflow: hidden;
       aspect-ratio: 16 / 10;
       max-height: 255px;
       width: 100%;
-      border: 1px solid rgba(250, 204, 21, 0.28);
+      border: 1px solid rgba(250, 204, 21, 0.38);
       box-shadow: 0 10px 26px rgba(0, 0, 0, 0.65);
       cursor: pointer;
       margin-bottom: 12px;
@@ -182,15 +190,15 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 22px;
       display: block;
     }
 
-    /* Sombra muy sutil solo detrás del texto para legibilidad sin oscurecer la foto */
     .hero-text-overlay {
       position: absolute;
       left: 14px;
       bottom: 14px;
-      max-width: 72%;
+      max-width: 75%;
       pointer-events: none;
     }
 
@@ -217,7 +225,7 @@
       display: inline-block;
       margin-top: 5px;
       font-size: 15px;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--gold);
       text-shadow: 0 2px 10px rgba(0, 0, 0, 0.98), 0 0 16px rgba(0, 0, 0, 0.95);
     }
@@ -245,14 +253,14 @@
       border-radius: 999px;
     }
 
-    /* CATEGORÍAS */
+    /* BOTONES DE CATEGORÍA AMARILLOS */
     .category-bar {
       display: flex;
       gap: 8px;
       overflow-x: auto;
       padding: 4px 0 12px;
       scrollbar-width: none;
-      border-bottom: 1px solid rgba(250, 204, 21, 0.16);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.25);
       margin-bottom: 14px;
     }
 
@@ -264,13 +272,13 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 8px 13px;
+      padding: 8px 14px;
       border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(15, 12, 9, 0.78);
-      color: #f5f5f4;
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      background: rgba(20, 15, 9, 0.85);
+      color: var(--gold);
       font-size: 12.5px;
-      font-weight: 600;
+      font-weight: 700;
       white-space: nowrap;
       cursor: pointer;
       transition: all 0.18s ease;
@@ -280,10 +288,10 @@
       background: var(--gold);
       color: #141008;
       border-color: var(--gold);
-      box-shadow: 0 0 14px rgba(250, 204, 21, 0.35);
+      box-shadow: 0 0 14px rgba(250, 204, 21, 0.4);
     }
 
-    /* CUADRÍCULA 2 PRODUCTOS POR FILA */
+    /* CUADRÍCULA 2 PRODUCTOS POR FILA CON IMÁGENES REDONDEADAS */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -292,8 +300,8 @@
 
     .dish-card {
       position: relative;
-      aspect-ratio: 1 / 1.06;
-      border-radius: 16px;
+      aspect-ratio: 1 / 1.08;
+      border-radius: 22px;
       overflow: hidden;
       background: var(--card-surface);
       border: 1px solid var(--border-soft);
@@ -311,6 +319,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 22px;
       display: block;
     }
 
@@ -318,22 +327,22 @@
       content: "";
       position: absolute;
       inset: 0;
+      border-radius: 22px;
       background: linear-gradient(
         180deg,
-        rgba(8, 6, 4, 0.04) 42%,
-        rgba(8, 6, 4, 0.76) 74%,
+        rgba(8, 6, 4, 0.03) 44%,
+        rgba(8, 6, 4, 0.78) 76%,
         rgba(8, 6, 4, 0.96) 100%
       );
       pointer-events: none;
     }
 
     .dish-meta {
-      position: relative;
-      z-index: 2;
       position: absolute;
       left: 0;
       right: 0;
       bottom: 0;
+      z-index: 2;
       padding: 10px 12px;
     }
 
@@ -347,18 +356,18 @@
 
     .dish-price {
       font-size: 15px;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--gold);
     }
 
-    /* SECCIÓN INFORMATIVA HORARIO / UBICACIÓN / CALIDAD */
+    /* FRANJA INFORMATIVA AMARILLA Y NEGRA */
     .info-strip {
       margin-top: 18px;
       padding: 12px 8px;
-      border-top: 1px solid rgba(250, 204, 21, 0.22);
-      border-bottom: 1px solid rgba(250, 204, 21, 0.22);
-      background: rgba(12, 9, 6, 0.65);
-      border-radius: 14px;
+      border-top: 1px solid rgba(250, 204, 21, 0.35);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.35);
+      background: rgba(14, 10, 6, 0.72);
+      border-radius: 18px;
       display: grid;
       grid-template-columns: 1.15fr 0.85fr 1fr;
       align-items: center;
@@ -374,7 +383,7 @@
     }
 
     .info-col:not(:last-child) {
-      border-right: 1px solid rgba(250, 204, 21, 0.25);
+      border-right: 1px solid rgba(250, 204, 21, 0.3);
     }
 
     .info-icon {
@@ -385,7 +394,7 @@
 
     .info-title {
       font-weight: 800;
-      color: #fffbeb;
+      color: var(--gold);
       font-size: 11px;
       display: block;
     }
@@ -399,27 +408,10 @@
     .quality-badge {
       text-align: center;
       font-style: italic;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--gold);
       font-size: 12px;
       line-height: 1.15;
-    }
-
-    /* BOTÓN DISCRETO ADMIN ABAJO */
-    .admin-subtle-wrap {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 10px;
-    }
-
-    .admin-subtle-btn {
-      background: rgba(20, 15, 10, 0.65);
-      border: 1px solid rgba(250, 204, 21, 0.16);
-      color: rgba(250, 204, 21, 0.55);
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      cursor: pointer;
     }
 
     /* BARRA INFERIOR FLOTANTE */
@@ -437,8 +429,8 @@
       margin: 0 auto;
       background: rgba(14, 11, 8, 0.94);
       backdrop-filter: blur(12px);
-      border: 1px solid rgba(250, 204, 21, 0.28);
-      border-radius: 22px;
+      border: 1px solid rgba(250, 204, 21, 0.42);
+      border-radius: 24px;
       padding: 8px 10px 8px 14px;
       display: flex;
       align-items: center;
@@ -458,14 +450,14 @@
     .cart-divider-v {
       width: 1px;
       height: 28px;
-      background: rgba(250, 204, 21, 0.25);
+      background: rgba(250, 204, 21, 0.35);
     }
 
     .wa-order-btn {
       background: var(--wa-green);
       color: #ffffff;
-      border: none;
-      border-radius: 16px;
+      border: 1px solid rgba(74, 222, 128, 0.35);
+      border-radius: 18px;
       padding: 8px 13px;
       display: flex;
       align-items: center;
@@ -491,15 +483,15 @@
       width: 32px;
       height: 32px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      color: #fffbeb;
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      color: var(--gold);
       font-size: 14px;
       cursor: pointer;
       flex-shrink: 0;
     }
 
-    /* VENTANA CASI A PANTALLA COMPLETA (CARRETE + CANTIDAD) */
+    /* VENTANA CASI A PANTALLA COMPLETA (CARRETE REDONDEADO + CANTIDAD / TACOS O 5 TACOS) */
     .detail-backdrop {
       position: fixed;
       inset: 0;
@@ -521,13 +513,13 @@
       max-width: 468px;
       height: 92vh;
       max-height: 820px;
-      background: #110d09;
-      border: 1px solid rgba(250, 204, 21, 0.3);
-      border-radius: 24px;
+      background: #120d08;
+      border: 1px solid rgba(250, 204, 21, 0.42);
+      border-radius: 26px;
       display: flex;
       flex-direction: column;
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.92);
     }
 
     .detail-top-bar {
@@ -535,29 +527,28 @@
       align-items: center;
       justify-content: space-between;
       padding: 12px 16px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.18);
     }
 
     .detail-cat-label {
-      font-size: 11px;
+      font-size: 11.5px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       color: var(--gold);
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .close-circle {
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: none;
-      color: #fff;
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.3);
+      color: var(--gold);
       font-size: 20px;
       cursor: pointer;
     }
 
-    /* CARRETE HORIZONTAL */
     .carousel-track {
       display: flex;
       overflow-x: auto;
@@ -566,7 +557,9 @@
       scrollbar-width: none;
       flex: 1;
       min-height: 270px;
-      background: #090705;
+      padding: 10px 12px 0;
+      gap: 10px;
+      background: #0b0805;
     }
 
     .carousel-track::-webkit-scrollbar {
@@ -577,14 +570,17 @@
       flex: 0 0 100%;
       width: 100%;
       height: 100%;
-      scroll-snap-align: start;
-      position: relative;
+      scroll-snap-align: center;
+      border-radius: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(250, 204, 21, 0.28);
     }
 
     .carousel-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      border-radius: 22px;
       display: block;
     }
 
@@ -612,8 +608,8 @@
 
     .detail-body {
       padding: 10px 18px 20px;
-      background: #140f0a;
-      border-top: 1px solid rgba(250, 204, 21, 0.16);
+      background: #15100a;
+      border-top: 1px solid rgba(250, 204, 21, 0.24);
     }
 
     .detail-title-row {
@@ -645,16 +641,16 @@
     }
 
     .qty-box {
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
+      background: rgba(250, 204, 21, 0.05);
+      border: 1px solid rgba(250, 204, 21, 0.24);
+      border-radius: 18px;
       padding: 12px;
       margin-bottom: 12px;
     }
 
     .qty-box-label {
       font-size: 12px;
-      color: #e7e5e4;
+      color: #fffbeb;
       margin-bottom: 8px;
       display: flex;
       justify-content: space-between;
@@ -668,13 +664,13 @@
     }
 
     .taco-option-btn {
-      background: rgba(250, 204, 21, 0.1);
-      border: 1px solid rgba(250, 204, 21, 0.4);
+      background: rgba(250, 204, 21, 0.14);
+      border: 1px solid rgba(250, 204, 21, 0.5);
       color: var(--gold);
       padding: 9px 10px;
-      border-radius: 12px;
+      border-radius: 14px;
       font-size: 12.5px;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
     }
 
@@ -688,19 +684,20 @@
     .step-btn {
       width: 42px;
       height: 42px;
-      border-radius: 12px;
-      border: 1px solid rgba(250, 204, 21, 0.35);
-      background: rgba(255, 255, 255, 0.06);
-      color: #fff;
+      border-radius: 14px;
+      border: 1px solid rgba(250, 204, 21, 0.45);
+      background: rgba(250, 204, 21, 0.12);
+      color: var(--gold);
       font-size: 20px;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
     }
 
     .step-count {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 800;
       text-align: center;
+      color: #fffbeb;
     }
 
     .confirm-add-btn {
@@ -708,7 +705,7 @@
       background: var(--gold);
       color: #141008;
       border: none;
-      border-radius: 15px;
+      border-radius: 16px;
       padding: 14px;
       font-size: 15px;
       font-weight: 900;
@@ -737,8 +734,8 @@
       max-height: 90vh;
       overflow-y: auto;
       background: #120d08;
-      border-top: 1px solid rgba(250, 204, 21, 0.3);
-      border-radius: 24px 24px 0 0;
+      border-top: 1px solid rgba(250, 204, 21, 0.42);
+      border-radius: 26px 26px 0 0;
       padding: 20px 18px 28px;
     }
 
@@ -751,12 +748,12 @@
 
     .folio-pill {
       display: inline-block;
-      background: rgba(250, 204, 21, 0.15);
-      border: 1px solid rgba(250, 204, 21, 0.45);
+      background: rgba(250, 204, 21, 0.16);
+      border: 1px solid rgba(250, 204, 21, 0.5);
       color: var(--gold);
       font-size: 12px;
       font-weight: 800;
-      padding: 4px 11px;
+      padding: 4px 12px;
       border-radius: 999px;
       margin-bottom: 12px;
     }
@@ -775,8 +772,8 @@
     .input-dark, .select-dark {
       width: 100%;
       background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 12px;
+      border: 1px solid rgba(250, 204, 21, 0.24);
+      border-radius: 14px;
       padding: 10px 12px;
       color: #fff;
       font-size: 13.5px;
@@ -790,7 +787,7 @@
     .btn-action {
       width: 100%;
       border: none;
-      border-radius: 13px;
+      border-radius: 14px;
       padding: 12px;
       font-size: 13.5px;
       font-weight: 800;
@@ -799,9 +796,9 @@
     }
 
     .btn-gps {
-      background: rgba(37, 99, 235, 0.22);
-      border: 1px solid rgba(96, 165, 250, 0.45);
-      color: #bfdbfe;
+      background: rgba(250, 204, 21, 0.14);
+      border: 1px solid rgba(250, 204, 21, 0.45);
+      color: var(--gold);
     }
 
     .btn-wa-send {
@@ -811,7 +808,7 @@
 
     .btn-wa-copy {
       background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(250, 204, 21, 0.28);
       color: #fffbeb;
     }
 
@@ -828,8 +825,8 @@
 
     .admin-card {
       background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 14px;
+      border: 1px solid rgba(250, 204, 21, 0.22);
+      border-radius: 18px;
       padding: 12px;
       margin-bottom: 12px;
     }
@@ -845,8 +842,9 @@
       justify-content: space-between;
       align-items: center;
       background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(250, 204, 21, 0.15);
       padding: 10px 12px;
-      border-radius: 12px;
+      border-radius: 14px;
       margin-bottom: 8px;
       font-size: 13px;
     }
@@ -856,7 +854,7 @@
   <div class="top-pattern-bar"></div>
 
   <div class="app-shell">
-    <!-- HEADER (SOLO LOGO, SIN LETRAS EXTRA DEL NOMBRE) -->
+    <!-- HEADER: LOGO A LA IZQUIERDA, UBICACIÓN Y MUÑEQUITO DE USUARIO A LA DERECHA -->
     <header class="topbar">
       <div class="logo-slot">
         <img
@@ -877,13 +875,15 @@
           <span class="loc-city">📍 Zacatepec, Mor.</span>
           <span class="loc-hours">Abierto hasta 1:00 am</span>
         </div>
-        <button class="menu-trigger-btn" type="button" onclick="openCheckout()" aria-label="Menú y pedido">
-          ☰
+        <button class="user-admin-btn" type="button" onclick="askAdminPassword()" title="Acceso administrador" aria-label="Acceso administrador">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 12c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.33 0-10 1.67-10 5v2h20v-2c0-3.33-6.67-5-10-5z"/>
+          </svg>
         </button>
       </div>
     </header>
 
-    <!-- PROMOCIÓN DEL DÍA (FOTO COMPLETA, SIN FONDO NEGRO DIFUMINADO) -->
+    <!-- PROMOCIÓN DEL DÍA (FOTO COMPLETA REDONDEADA SIN FONDO NEGRO DIFUMINADO) -->
     <section class="hero-banner" id="promoBanner" onclick="openPromoModal()">
       <img
         id="promoBannerImg"
@@ -912,7 +912,7 @@
       <button class="cat-btn" type="button" data-cat="Bebidas">🥤 Bebidas</button>
     </nav>
 
-    <!-- PRODUCTOS (2 POR FILA, SIN BOTÓN + EN LA TARJETA) -->
+    <!-- PRODUCTOS (2 POR FILA, REDONDEADOS, SIN BOTÓN + EN LA TARJETA) -->
     <main class="menu-grid" id="menuGrid"></main>
 
     <!-- INFORMACIÓN DE HORARIO, UBICACIÓN Y CALIDAD -->
@@ -935,13 +935,9 @@
         <div class="quality-badge">Calidad y Sabor<br>¡Siempre!</div>
       </div>
     </section>
-
-    <div class="admin-subtle-wrap">
-      <button class="admin-subtle-btn" type="button" onclick="askAdminPassword()">Admin</button>
-    </div>
   </div>
 
-  <!-- BARRA FLOTANTE INFERIOR -->
+  <!-- BARRA INFERIOR FLOTANTE -->
   <div class="floating-cart-wrap">
     <div class="floating-cart-bar">
       <div class="cart-left" onclick="openCheckout()">
@@ -987,9 +983,8 @@
             <strong id="detailSubtotal" style="color:var(--gold);">Subtotal: $0</strong>
           </div>
 
-          <!-- Opciones especiales para Tacos: por taco individual o por orden de 5 tacos -->
           <div class="taco-quick-buttons" id="tacoOptionsRow" style="display:none;">
-            <button class="taco-option-btn" type="button" onclick="addTacoUnits(1)">+ 1 Taco</button>
+            <button class="taco-option-btn" type="button" onclick="addTacoUnits(1)">+ Por Taco</button>
             <button class="taco-option-btn" type="button" onclick="addTacoUnits(5)">+ Orden de 5 Tacos</button>
           </div>
 
@@ -1051,7 +1046,7 @@
   <div class="sheet-backdrop" id="adminModal">
     <div class="sheet-panel">
       <div class="sheet-head">
-        <h3>Administración (1234)</h3>
+        <h3>Administración</h3>
         <button class="close-circle" type="button" onclick="closeSheet('adminModal')">×</button>
       </div>
 
@@ -1069,9 +1064,9 @@
         <button class="btn-action btn-gold" type="button" onclick="saveAdminLogo()">Guardar Logo</button>
       </div>
 
-      <!-- PROMOCIÓN DEL DÍA (CON CARRUSEL DE FOTOS DEL ADMIN) -->
+      <!-- PROMOCIÓN DEL DÍA (FOTOS DEL CARRUSEL) -->
       <div class="admin-card">
-        <strong style="color:var(--gold);display:block;margin-bottom:8px;">Promoción del Día (Fotos del carrete)</strong>
+        <strong style="color:var(--gold);display:block;margin-bottom:8px;">Promoción del Día (Carrete de fotos)</strong>
         <div class="form-field">
           <label>Título de promoción</label>
           <input type="text" id="adminPromoTitle" class="input-dark" />
@@ -1085,11 +1080,11 @@
           <input type="text" id="adminPromoDesc" class="input-dark" />
         </div>
         <div class="form-field">
-          <label>Fotos de la promoción (separadas por coma, URLs o archivos)</label>
+          <label>Fotos de la promoción (separadas por coma o URLs)</label>
           <input type="text" id="adminPromoGallery" class="input-dark" placeholder="promo.jpg, foto2.jpg, foto3.jpg" />
         </div>
         <div class="form-field">
-          <label>Agregar foto desde dispositivo al carrete de promoción</label>
+          <label>Agregar fotos desde dispositivo al carrete de promoción</label>
           <input type="file" accept="image/*" multiple class="input-dark" onchange="uploadPromoGalleryFiles(this)" />
         </div>
         <button class="btn-action btn-gold" type="button" onclick="saveAdminPromo()">Guardar Promoción</button>
@@ -1105,7 +1100,7 @@
           </div>
           <div class="form-field">
             <label>Precio ($ MXN)</label>
-            <input type="number" id="newDishPrice" class="input-dark" placeholder="14" />
+            <input type="number" id="newDishPrice" class="input-dark" placeholder="60" />
           </div>
         </div>
         <div class="form-field">
@@ -1124,7 +1119,7 @@
             </select>
           </div>
           <div class="form-field">
-            <label>Fotos (separadas por coma)</label>
+            <label>Fotos carrete (coma)</label>
             <input type="text" id="newDishImgs" class="input-dark" placeholder="foto1.jpg, foto2.jpg" />
           </div>
         </div>
@@ -1232,11 +1227,9 @@
     let selectedCategory = "Tacos";
     let cart = [];
 
-    // Estado de la ventana detalle
     let activeDetailItem = null;
-    let activeDetailIsPromo = false;
     let detailQty = 1;
-    let detailUnitMode = false; // true cuando en tacos se elige por taco individual
+    let detailUnitMode = false;
 
     function toggleLogo(ok) {
       const img = document.getElementById("mainLogoImg");
@@ -1246,16 +1239,14 @@
     }
 
     function renderHeaderLogo() {
-      const img = document.getElementById("mainLogoImg");
-      img.src = logoPath || "logo.png";
+      document.getElementById("mainLogoImg").src = logoPath || "logo.png";
     }
 
     function renderPromoBanner() {
       document.getElementById("promoKickerTxt").textContent = promoConfig.kicker || "PROMOCIÓN DEL DÍA";
       document.getElementById("promoHeadingTxt").textContent = promoConfig.title || "Jueves de Pastor";
       document.getElementById("promoOfferTxt").textContent = promoConfig.offer || "6 tacos x $60";
-      const firstImg = (promoConfig.images && promoConfig.images[0]) || "promo.jpg";
-      document.getElementById("promoBannerImg").src = firstImg;
+      document.getElementById("promoBannerImg").src = (promoConfig.images && promoConfig.images[0]) || "promo.jpg";
     }
 
     function renderMenuGrid() {
@@ -1290,11 +1281,9 @@
       });
     });
 
-    // ABRIR VENTANA CASI A PANTALLA COMPLETA PARA PRODUCTO O PROMOCIÓN
     function openDishModal(dishId) {
       const dish = dishes.find(d => d.id === dishId);
       if (!dish) return;
-      activeDetailIsPromo = false;
       activeDetailItem = {
         id: "dish_" + dish.id,
         name: dish.name,
@@ -1310,7 +1299,6 @@
     }
 
     function openPromoModal() {
-      activeDetailIsPromo = true;
       const imgs = (promoConfig.images && promoConfig.images.length) ? promoConfig.images : ["promo.jpg"];
       activeDetailItem = {
         id: "promo_day",
@@ -1335,7 +1323,6 @@
       const isTaco = item.category === "Tacos";
       document.getElementById("tacoOptionsRow").style.display = isTaco ? "grid" : "none";
 
-      // Carrete horizontal
       const track = document.getElementById("carouselTrack");
       const dots = document.getElementById("carouselDots");
       track.innerHTML = item.images.map((src, idx) => `
@@ -1355,25 +1342,24 @@
 
     function scrollCarouselTo(index) {
       const track = document.getElementById("carouselTrack");
-      track.scrollTo({ left: index * track.clientWidth, behavior: "smooth" });
+      track.scrollTo({ left: index * (track.clientWidth + 10), behavior: "smooth" });
     }
 
     function syncCarouselDots() {
       const track = document.getElementById("carouselTrack");
       if (!track.clientWidth) return;
-      const idx = Math.round(track.scrollLeft / track.clientWidth);
+      const idx = Math.round(track.scrollLeft / (track.clientWidth + 10));
       document.querySelectorAll("#carouselDots .ind-dot").forEach((dot, i) => {
         dot.classList.toggle("active", i === idx);
       });
     }
 
-    // Agregar por taco individual o por orden de 5 tacos
     function addTacoUnits(units) {
       if (!activeDetailItem) return;
       if (units === 1) {
         detailUnitMode = true;
         detailQty = (detailQty || 0) + 1;
-      } else if (units === 5) {
+      } else {
         detailUnitMode = false;
         detailQty = (detailQty || 0) + 1;
       }
@@ -1399,8 +1385,7 @@
           hintText = "Modo por taco individual:";
         } else {
           unitCost = activeDetailItem.price;
-          const totalTacos = detailQty * 5;
-          labelText = `${detailQty} ${detailQty === 1 ? "orden de 5 tacos" : "órdenes de 5 tacos"} (${totalTacos} tacos)`;
+          labelText = `${detailQty} ${detailQty === 1 ? "orden de 5 tacos" : "órdenes de 5 tacos"} (${detailQty * 5} tacos)`;
           hintText = "Modo por orden de 5 tacos:";
         }
       }
@@ -1449,7 +1434,6 @@
       document.getElementById("checkoutTotalTxt").textContent = `$${total}`;
     }
 
-    // FOLIO ASCENDENTE DESDE 1000
     function getFolio() {
       const n = parseInt(localStorage.getItem("tz_folio_1000") || "1000", 10);
       return isNaN(n) || n < 1000 ? 1000 : n;
@@ -1562,7 +1546,6 @@
       window.open(`https://wa.me/${recipient}?text=${encodeURIComponent(msg)}`, "_blank");
     }
 
-    // ADMIN CON CONTRASEÑA 1234
     function askAdminPassword() {
       const input = prompt("Contraseña de administrador:");
       if (input === null) return;
@@ -1740,7 +1723,6 @@
       document.getElementById(id).classList.remove("open");
     }
 
-    // Arranque
     renderHeaderLogo();
     renderPromoBanner();
     renderMenuGrid();
