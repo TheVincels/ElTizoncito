@@ -84,7 +84,7 @@
       border-bottom: 1px solid rgba(250, 204, 21, 0.35);
     }
 
-    /* HEADER: LOGO A LA IZQUIERDA, UBICACIÓN Y MUÑEQUITO DE USUARIO A LA DERECHA */
+    /* HEADER */
     .topbar {
       display: flex;
       align-items: center;
@@ -171,7 +171,7 @@
       color: #141008;
     }
 
-    /* BANNER PROMOCIÓN DEL DÍA (FOTO COMPLETA REDONDEADA SIN FONDO NEGRO DIFUMINADO) */
+    /* BANNER PROMOCIÓN DEL DÍA */
     .hero-banner {
       position: relative;
       border-radius: 22px;
@@ -198,7 +198,7 @@
       position: absolute;
       left: 14px;
       bottom: 14px;
-      max-width: 75%;
+      max-width: 78%;
       pointer-events: none;
     }
 
@@ -360,7 +360,7 @@
       color: var(--gold);
     }
 
-    /* FRANJA INFORMATIVA AMARILLA Y NEGRA */
+    /* FRANJA INFORMATIVA */
     .info-strip {
       margin-top: 18px;
       padding: 12px 8px;
@@ -491,7 +491,7 @@
       flex-shrink: 0;
     }
 
-    /* VENTANA CASI A PANTALLA COMPLETA (CARRETE REDONDEADO + CANTIDAD / TACOS O 5 TACOS) */
+    /* VENTANA CASI A PANTALLA COMPLETA */
     .detail-backdrop {
       position: fixed;
       inset: 0;
@@ -817,6 +817,12 @@
       color: #141008;
     }
 
+    .btn-outline-gold {
+      background: rgba(250, 204, 21, 0.12);
+      border: 1px solid rgba(250, 204, 21, 0.45);
+      color: var(--gold);
+    }
+
     .btn-del {
       background: rgba(220, 38, 38, 0.18);
       border: 1px solid rgba(248, 113, 113, 0.4);
@@ -829,6 +835,67 @@
       border-radius: 18px;
       padding: 12px;
       margin-bottom: 12px;
+    }
+
+    .promo-slot-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .promo-slot-btn {
+      padding: 8px 6px;
+      border-radius: 12px;
+      border: 1px solid rgba(250, 204, 21, 0.35);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .promo-slot-btn.active {
+      background: var(--gold);
+      color: #141008;
+      border-color: var(--gold);
+    }
+
+    .thumbs-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .thumb-chip {
+      position: relative;
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(250, 204, 21, 0.4);
+    }
+
+    .thumb-chip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .thumb-remove {
+      position: absolute;
+      top: 2px;
+      right: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      font-size: 11px;
+      line-height: 1;
+      cursor: pointer;
     }
 
     .grid-2 {
@@ -854,7 +921,7 @@
   <div class="top-pattern-bar"></div>
 
   <div class="app-shell">
-    <!-- HEADER: LOGO A LA IZQUIERDA, UBICACIÓN Y MUÑEQUITO DE USUARIO A LA DERECHA -->
+    <!-- HEADER -->
     <header class="topbar">
       <div class="logo-slot">
         <img
@@ -883,7 +950,7 @@
       </div>
     </header>
 
-    <!-- PROMOCIÓN DEL DÍA (FOTO COMPLETA REDONDEADA SIN FONDO NEGRO DIFUMINADO) -->
+    <!-- BANNER PROMOCIÓN DEL DÍA -->
     <section class="hero-banner" id="promoBanner" onclick="openPromoModal()">
       <img
         id="promoBannerImg"
@@ -959,7 +1026,7 @@
     </div>
   </div>
 
-  <!-- VENTANA CASI A PANTALLA COMPLETA (CARRETE HORIZONTAL + CANTIDAD / TACOS O 5 TACOS) -->
+  <!-- VENTANA CASI A PANTALLA COMPLETA -->
   <div class="detail-backdrop" id="detailModal">
     <div class="detail-window">
       <div class="detail-top-bar">
@@ -1002,7 +1069,7 @@
     </div>
   </div>
 
-  <!-- MODAL DE PEDIDO, FOLIO #1000+ Y UBICACIÓN GOOGLE MAPS -->
+  <!-- MODAL DE PEDIDO -->
   <div class="sheet-backdrop" id="checkoutModal">
     <div class="sheet-panel">
       <div class="sheet-head">
@@ -1064,30 +1131,51 @@
         <button class="btn-action btn-gold" type="button" onclick="saveAdminLogo()">Guardar Logo</button>
       </div>
 
-      <!-- PROMOCIÓN DEL DÍA (FOTOS DEL CARRUSEL) -->
+      <!-- 3 OPCIONES DE PROMOCIÓN PARA DIFERENTES DÍAS -->
       <div class="admin-card">
-        <strong style="color:var(--gold);display:block;margin-bottom:8px;">Promoción del Día (Carrete de fotos)</strong>
-        <div class="form-field">
-          <label>Título de promoción</label>
-          <input type="text" id="adminPromoTitle" class="input-dark" />
+        <strong style="color:var(--gold);display:block;margin-bottom:8px;">Ofertas del Día (3 Días / Opciones)</strong>
+
+        <div class="promo-slot-tabs" id="promoSlotTabs">
+          <button class="promo-slot-btn active" type="button" onclick="selectPromoSlot(0)">Día / Opción 1</button>
+          <button class="promo-slot-btn" type="button" onclick="selectPromoSlot(1)">Día / Opción 2</button>
+          <button class="promo-slot-btn" type="button" onclick="selectPromoSlot(2)">Día / Opción 3</button>
         </div>
-        <div class="form-field">
-          <label>Oferta / Precio</label>
-          <input type="text" id="adminPromoOffer" class="input-dark" />
+
+        <div class="grid-2">
+          <div class="form-field">
+            <label>Etiqueta / Día</label>
+            <input type="text" id="adminPromoKicker" class="input-dark" placeholder="Ej. PROMOCIÓN DEL DÍA" />
+          </div>
+          <div class="form-field">
+            <label>Precio promo ($ MXN)</label>
+            <input type="number" id="adminPromoPrice" class="input-dark" placeholder="60" />
+          </div>
         </div>
+
+        <div class="form-field">
+          <label>Título de la promoción</label>
+          <input type="text" id="adminPromoTitle" class="input-dark" placeholder="Ej. Jueves de Pastor" />
+        </div>
+
+        <div class="form-field">
+          <label>Texto de oferta</label>
+          <input type="text" id="adminPromoOffer" class="input-dark" placeholder="Ej. 6 tacos x $60" />
+        </div>
+
         <div class="form-field">
           <label>Descripción en ventana completa</label>
           <input type="text" id="adminPromoDesc" class="input-dark" />
         </div>
+
         <div class="form-field">
-          <label>Fotos de la promoción (separadas por coma o URLs)</label>
-          <input type="text" id="adminPromoGallery" class="input-dark" placeholder="promo.jpg, foto2.jpg, foto3.jpg" />
+          <label>Imágenes del carrete de esta promoción</label>
+          <div class="thumbs-strip" id="promoThumbsStrip"></div>
+          <input type="file" accept="image/*" multiple class="input-dark" onchange="addPromoFiles(this)" />
+          <input type="text" id="adminPromoGallery" class="input-dark" style="margin-top:6px;" placeholder="promo.jpg, foto2.jpg" />
         </div>
-        <div class="form-field">
-          <label>Agregar fotos desde dispositivo al carrete de promoción</label>
-          <input type="file" accept="image/*" multiple class="input-dark" onchange="uploadPromoGalleryFiles(this)" />
-        </div>
-        <button class="btn-action btn-gold" type="button" onclick="saveAdminPromo()">Guardar Promoción</button>
+
+        <button class="btn-action btn-gold" type="button" onclick="saveCurrentPromoSlot()">Guardar esta Promoción</button>
+        <button class="btn-action btn-outline-gold" type="button" onclick="activateCurrentPromoSlot()">★ Mostrar esta Promoción en el Banner</button>
       </div>
 
       <!-- AGREGAR PRODUCTO -->
@@ -1119,14 +1207,18 @@
             </select>
           </div>
           <div class="form-field">
-            <label>Fotos carrete (coma)</label>
-            <input type="text" id="newDishImgs" class="input-dark" placeholder="foto1.jpg, foto2.jpg" />
+            <label>Subir fotos desde galería</label>
+            <input type="file" accept="image/*" multiple class="input-dark" id="newDishFile" />
           </div>
+        </div>
+        <div class="form-field">
+          <label>O nombres/URLs de fotos (separadas por coma)</label>
+          <input type="text" id="newDishImgs" class="input-dark" placeholder="foto1.jpg, foto2.jpg" />
         </div>
         <button class="btn-action btn-gold" type="button" onclick="createNewDish()">+ Guardar Platillo</button>
       </div>
 
-      <!-- EDITAR PRODUCTOS EXISTENTES -->
+      <!-- EDITAR PRODUCTOS EXISTENTES CON AGREGAR IMÁGENES -->
       <strong style="display:block;margin-bottom:8px;color:var(--gold);">Editar Platillos Existentes</strong>
       <div id="adminDishesContainer"></div>
 
@@ -1139,18 +1231,35 @@
     const ADMIN_PASS = "1234";
     const FALLBACK_FOOD = "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=800&q=80";
 
-    const INITIAL_PROMO = {
-      kicker: "PROMOCIÓN DEL DÍA",
-      title: "Jueves de Pastor",
-      offer: "6 tacos x $60",
-      price: 60,
-      description: "Promoción del día: 6 tacos al pastor con piña, cebolla, cilantro y salsa de la casa.",
-      images: [
-        "promo.jpg",
-        "orden-pastor.jpg",
-        "kilo-pastor.jpg"
-      ]
-    };
+    const INITIAL_PROMOS = [
+      {
+        id: 0,
+        kicker: "PROMOCIÓN DEL DÍA • JUEVES",
+        title: "Jueves de Pastor",
+        offer: "6 tacos x $60",
+        price: 60,
+        description: "Promoción del día: 6 tacos al pastor con piña, cebolla, cilantro y salsa de la casa.",
+        images: ["promo.jpg", "orden-pastor.jpg", "kilo-pastor.jpg"]
+      },
+      {
+        id: 1,
+        kicker: "PROMOCIÓN DEL DÍA • VIERNES",
+        title: "Viernes Familiar",
+        offer: "Paquete Familiar $350",
+        price: 350,
+        description: "Charola familiar con carne, queso fundido, jamón y aguacate lista para compartir.",
+        images: ["paquete-familiar.jpg", "kilo-pastor.jpg"]
+      },
+      {
+        id: 2,
+        kicker: "PROMOCIÓN DEL DÍA • FIN DE SEMANA",
+        title: "Kilo Tizoncito",
+        offer: "Kilo de Pastor $350",
+        price: 350,
+        description: "1 kilo de carne al pastor con verdura a un lado, tortillas calientitas y salsas.",
+        images: ["kilo-pastor.jpg", "orden-pastor.jpg"]
+      }
+    ];
 
     const INITIAL_DISHES = [
       {
@@ -1222,7 +1331,11 @@
     ];
 
     let logoPath = localStorage.getItem("tz_logo_path") || "logo.png";
-    let promoConfig = JSON.parse(localStorage.getItem("tz_promo_cfg")) || JSON.parse(JSON.stringify(INITIAL_PROMO));
+    let promosList = JSON.parse(localStorage.getItem("tz_promos_3")) || JSON.parse(JSON.stringify(INITIAL_PROMOS));
+    let activePromoIndex = Number(localStorage.getItem("tz_active_promo_idx") || 0);
+    if (activePromoIndex < 0 || activePromoIndex >= promosList.length) activePromoIndex = 0;
+
+    let editingPromoSlot = activePromoIndex;
     let dishes = JSON.parse(localStorage.getItem("tz_dishes_cfg")) || JSON.parse(JSON.stringify(INITIAL_DISHES));
     let selectedCategory = "Tacos";
     let cart = [];
@@ -1230,6 +1343,10 @@
     let activeDetailItem = null;
     let detailQty = 1;
     let detailUnitMode = false;
+
+    function getActivePromo() {
+      return promosList[activePromoIndex] || promosList[0];
+    }
 
     function toggleLogo(ok) {
       const img = document.getElementById("mainLogoImg");
@@ -1243,10 +1360,16 @@
     }
 
     function renderPromoBanner() {
-      document.getElementById("promoKickerTxt").textContent = promoConfig.kicker || "PROMOCIÓN DEL DÍA";
-      document.getElementById("promoHeadingTxt").textContent = promoConfig.title || "Jueves de Pastor";
-      document.getElementById("promoOfferTxt").textContent = promoConfig.offer || "6 tacos x $60";
-      document.getElementById("promoBannerImg").src = (promoConfig.images && promoConfig.images[0]) || "promo.jpg";
+      const p = getActivePromo();
+      document.getElementById("promoKickerTxt").textContent = p.kicker || "PROMOCIÓN DEL DÍA";
+      document.getElementById("promoHeadingTxt").textContent = p.title || "Promoción del Día";
+      document.getElementById("promoOfferTxt").textContent = p.offer || "";
+      document.getElementById("promoBannerImg").src = (p.images && p.images[0]) || "promo.jpg";
+
+      const dotsWrap = document.getElementById("promoDots");
+      dotsWrap.innerHTML = promosList.map((_, i) =>
+        `<span class="${i === activePromoIndex ? "active" : ""}"></span>`
+      ).join("");
     }
 
     function renderMenuGrid() {
@@ -1299,14 +1422,15 @@
     }
 
     function openPromoModal() {
-      const imgs = (promoConfig.images && promoConfig.images.length) ? promoConfig.images : ["promo.jpg"];
+      const p = getActivePromo();
+      const imgs = (p.images && p.images.length) ? p.images : ["promo.jpg"];
       activeDetailItem = {
-        id: "promo_day",
-        name: `${promoConfig.title} (${promoConfig.offer})`,
-        category: "Promoción del Día",
-        price: Number(promoConfig.price) || 60,
-        unitPrice: 10,
-        description: promoConfig.description || "Promoción especial del día en Taquería El Tizoncito.",
+        id: "promo_" + p.id,
+        name: `${p.title} (${p.offer})`,
+        category: p.kicker || "Promoción del Día",
+        price: Number(p.price) || 60,
+        unitPrice: 12,
+        description: p.description || "",
         images: imgs
       };
       detailUnitMode = false;
@@ -1546,6 +1670,7 @@
       window.open(`https://wa.me/${recipient}?text=${encodeURIComponent(msg)}`, "_blank");
     }
 
+    // ADMIN CON CONTRASEÑA 1234
     function askAdminPassword() {
       const input = prompt("Contraseña de administrador:");
       if (input === null) return;
@@ -1556,20 +1681,108 @@
       }
     }
 
+    function persistAll() {
+      localStorage.setItem("tz_logo_path", logoPath);
+      localStorage.setItem("tz_promos_3", JSON.stringify(promosList));
+      localStorage.setItem("tz_active_promo_idx", String(activePromoIndex));
+      localStorage.setItem("tz_dishes_cfg", JSON.stringify(dishes));
+    }
+
     function openAdminSheet() {
       document.getElementById("adminLogoUrl").value = logoPath;
-      document.getElementById("adminPromoTitle").value = promoConfig.title || "";
-      document.getElementById("adminPromoOffer").value = promoConfig.offer || "";
-      document.getElementById("adminPromoDesc").value = promoConfig.description || "";
-      document.getElementById("adminPromoGallery").value = (promoConfig.images || []).join(", ");
+      editingPromoSlot = activePromoIndex;
+      loadPromoSlotIntoForm(editingPromoSlot);
       renderAdminDishes();
       document.getElementById("adminModal").classList.add("open");
     }
 
-    function persistAll() {
-      localStorage.setItem("tz_logo_path", logoPath);
-      localStorage.setItem("tz_promo_cfg", JSON.stringify(promoConfig));
-      localStorage.setItem("tz_dishes_cfg", JSON.stringify(dishes));
+    function selectPromoSlot(slotIdx) {
+      editingPromoSlot = slotIdx;
+      document.querySelectorAll("#promoSlotTabs .promo-slot-btn").forEach((b, i) => {
+        b.classList.toggle("active", i === slotIdx);
+      });
+      loadPromoSlotIntoForm(slotIdx);
+    }
+
+    function loadPromoSlotIntoForm(slotIdx) {
+      const slot = promosList[slotIdx] || promosList[0];
+      document.querySelectorAll("#promoSlotTabs .promo-slot-btn").forEach((b, i) => {
+        const star = i === activePromoIndex ? " ★" : "";
+        b.textContent = `Opción ${i + 1}${star}`;
+        b.classList.toggle("active", i === slotIdx);
+      });
+      document.getElementById("adminPromoKicker").value = slot.kicker || "";
+      document.getElementById("adminPromoPrice").value = slot.price || 60;
+      document.getElementById("adminPromoTitle").value = slot.title || "";
+      document.getElementById("adminPromoOffer").value = slot.offer || "";
+      document.getElementById("adminPromoDesc").value = slot.description || "";
+      document.getElementById("adminPromoGallery").value = (slot.images || []).join(", ");
+      renderPromoThumbs(slot.images || []);
+    }
+
+    function renderPromoThumbs(imgs) {
+      const strip = document.getElementById("promoThumbsStrip");
+      strip.innerHTML = (imgs || []).map((src, i) => `
+        <div class="thumb-chip">
+          <img src="${src}" alt="Promo ${i + 1}" onerror="this.src='${FALLBACK_FOOD}'" />
+          <button class="thumb-remove" type="button" onclick="removePromoImg(${i})">×</button>
+        </div>
+      `).join("");
+    }
+
+    function removePromoImg(imgIdx) {
+      const slot = promosList[editingPromoSlot];
+      if (!slot) return;
+      slot.images.splice(imgIdx, 1);
+      document.getElementById("adminPromoGallery").value = slot.images.join(", ");
+      renderPromoThumbs(slot.images);
+    }
+
+    function addPromoFiles(input) {
+      const files = Array.from(input.files || []);
+      if (!files.length) return;
+      Promise.all(files.map(file => new Promise(res => {
+        const r = new FileReader();
+        r.onload = e => res(e.target.result);
+        r.readAsDataURL(file);
+      }))).then(added => {
+        const slot = promosList[editingPromoSlot];
+        const typed = document.getElementById("adminPromoGallery").value
+          .split(",").map(s => s.trim()).filter(Boolean);
+        slot.images = typed.concat(added);
+        document.getElementById("adminPromoGallery").value = slot.images.join(", ");
+        renderPromoThumbs(slot.images);
+        input.value = "";
+      });
+    }
+
+    function saveCurrentPromoSlot() {
+      const slot = promosList[editingPromoSlot];
+      const typedImgs = document.getElementById("adminPromoGallery").value
+        .split(",").map(s => s.trim()).filter(Boolean);
+
+      slot.kicker = document.getElementById("adminPromoKicker").value.trim() || "PROMOCIÓN DEL DÍA";
+      slot.price = Number(document.getElementById("adminPromoPrice").value) || 60;
+      slot.title = document.getElementById("adminPromoTitle").value.trim() || "Promoción";
+      slot.offer = document.getElementById("adminPromoOffer").value.trim() || "";
+      slot.description = document.getElementById("adminPromoDesc").value.trim() || "";
+      slot.images = typedImgs.length ? typedImgs : ["promo.jpg"];
+
+      persistAll();
+      if (editingPromoSlot === activePromoIndex) {
+        renderPromoBanner();
+      }
+      renderPromoThumbs(slot.images);
+      alert(`Opción de promoción ${editingPromoSlot + 1} guardada.`);
+    }
+
+    function activateCurrentPromoSlot() {
+      saveCurrentPromoSlot();
+      activePromoIndex = editingPromoSlot;
+      persistAll();
+      loadPromoSlotIntoForm(editingPromoSlot);
+      renderPromoBanner();
+      alert(`La Opción ${editingPromoSlot + 1} ahora se muestra como oferta principal.`);
     }
 
     function uploadLogoFile(input) {
@@ -1589,50 +1802,33 @@
       alert("Logo guardado.");
     }
 
-    function uploadPromoGalleryFiles(input) {
-      const files = Array.from(input.files || []);
-      if (!files.length) return;
-      Promise.all(files.map(file => new Promise(res => {
-        const r = new FileReader();
-        r.onload = e => res(e.target.result);
-        r.readAsDataURL(file);
-      }))).then(base64List => {
-        const currentInput = document.getElementById("adminPromoGallery").value.trim();
-        const existing = currentInput ? currentInput.split(",").map(s => s.trim()).filter(Boolean) : [];
-        document.getElementById("adminPromoGallery").value = existing.concat(base64List).join(", ");
-      });
-    }
-
-    function saveAdminPromo() {
-      promoConfig.title = document.getElementById("adminPromoTitle").value.trim() || INITIAL_PROMO.title;
-      promoConfig.offer = document.getElementById("adminPromoOffer").value.trim() || INITIAL_PROMO.offer;
-      promoConfig.description = document.getElementById("adminPromoDesc").value.trim() || INITIAL_PROMO.description;
-      const rawImgs = document.getElementById("adminPromoGallery").value.split(",").map(s => s.trim()).filter(Boolean);
-      promoConfig.images = rawImgs.length ? rawImgs : ["promo.jpg"];
-      persistAll();
-      renderPromoBanner();
-      alert("Promoción del día actualizada.");
-    }
-
+    // EDITAR PLATILLOS: SUBIR FOTOS DIRECTO + MINIATURAS
     function renderAdminDishes() {
       const box = document.getElementById("adminDishesContainer");
-      box.innerHTML = dishes.map(d => `
-        <div class="admin-card">
-          <div class="grid-2">
-            <div class="form-field">
-              <label>Nombre</label>
-              <input type="text" id="dName_${d.id}" class="input-dark" value="${d.name}" />
+      box.innerHTML = dishes.map(d => {
+        const thumbs = (d.images || []).map((src, i) => `
+          <div class="thumb-chip">
+            <img src="${src}" alt="${d.name} ${i + 1}" onerror="this.src='${FALLBACK_FOOD}'" />
+            <button class="thumb-remove" type="button" onclick="removeDishImage(${d.id}, ${i})">×</button>
+          </div>
+        `).join("");
+
+        return `
+          <div class="admin-card">
+            <div class="grid-2">
+              <div class="form-field">
+                <label>Nombre</label>
+                <input type="text" id="dName_${d.id}" class="input-dark" value="${d.name}" />
+              </div>
+              <div class="form-field">
+                <label>Precio ($)</label>
+                <input type="number" id="dPrice_${d.id}" class="input-dark" value="${d.price}" />
+              </div>
             </div>
             <div class="form-field">
-              <label>Precio ($)</label>
-              <input type="number" id="dPrice_${d.id}" class="input-dark" value="${d.price}" />
+              <label>Descripción</label>
+              <input type="text" id="dDesc_${d.id}" class="input-dark" value="${d.description || ""}" />
             </div>
-          </div>
-          <div class="form-field">
-            <label>Descripción</label>
-            <input type="text" id="dDesc_${d.id}" class="input-dark" value="${d.description || ""}" />
-          </div>
-          <div class="grid-2">
             <div class="form-field">
               <label>Categoría</label>
               <select id="dCat_${d.id}" class="select-dark">
@@ -1642,16 +1838,48 @@
               </select>
             </div>
             <div class="form-field">
-              <label>Fotos carrete (coma)</label>
-              <input type="text" id="dImgs_${d.id}" class="input-dark" value="${(d.images || []).join(", ")}" />
+              <label>Imágenes del platillo (toca × para quitar o sube nuevas)</label>
+              <div class="thumbs-strip">${thumbs}</div>
+              <input type="file" accept="image/*" multiple class="input-dark" onchange="uploadImagesToDish(${d.id}, this)" />
+              <input type="text" id="dImgs_${d.id}" class="input-dark" style="margin-top:6px;" value="${(d.images || []).join(", ")}" placeholder="foto1.jpg, foto2.jpg" />
+            </div>
+            <div class="grid-2">
+              <button class="btn-action btn-gold" type="button" onclick="saveDishEdit(${d.id})">Guardar</button>
+              <button class="btn-action btn-del" type="button" onclick="removeDish(${d.id})">Eliminar</button>
             </div>
           </div>
-          <div class="grid-2">
-            <button class="btn-action btn-gold" type="button" onclick="saveDishEdit(${d.id})">Guardar</button>
-            <button class="btn-action btn-del" type="button" onclick="removeDish(${d.id})">Eliminar</button>
-          </div>
-        </div>
-      `).join("");
+        `;
+      }).join("");
+    }
+
+    function uploadImagesToDish(dishId, input) {
+      const files = Array.from(input.files || []);
+      if (!files.length) return;
+      const dish = dishes.find(d => d.id === dishId);
+      if (!dish) return;
+
+      Promise.all(files.map(file => new Promise(res => {
+        const r = new FileReader();
+        r.onload = e => res(e.target.result);
+        r.readAsDataURL(file);
+      }))).then(addedImgs => {
+        const currentText = (document.getElementById(`dImgs_${dishId}`)?.value || "")
+          .split(",").map(s => s.trim()).filter(Boolean);
+        dish.images = currentText.concat(addedImgs);
+        persistAll();
+        renderAdminDishes();
+        renderMenuGrid();
+        input.value = "";
+      });
+    }
+
+    function removeDishImage(dishId, imgIdx) {
+      const dish = dishes.find(d => d.id === dishId);
+      if (!dish) return;
+      dish.images.splice(imgIdx, 1);
+      persistAll();
+      renderAdminDishes();
+      renderMenuGrid();
     }
 
     function saveDishEdit(id) {
@@ -1680,37 +1908,53 @@
       const price = Number(document.getElementById("newDishPrice").value);
       const description = document.getElementById("newDishDesc").value.trim();
       const category = document.getElementById("newDishCat").value;
-      const imgs = document.getElementById("newDishImgs").value.split(",").map(s => s.trim()).filter(Boolean);
+      const typedImgs = document.getElementById("newDishImgs").value.split(",").map(s => s.trim()).filter(Boolean);
+      const fileInput = document.getElementById("newDishFile");
 
       if (!name || !price) {
         alert("Completa nombre y precio.");
         return;
       }
 
-      const nextId = dishes.length ? Math.max(...dishes.map(x => x.id)) + 1 : 1;
-      dishes.push({
-        id: nextId,
-        name,
-        price,
-        unitPrice: Math.max(10, Math.round(price / 5)),
-        category,
-        description,
-        images: imgs.length ? imgs : [FALLBACK_FOOD]
-      });
-      persistAll();
-      document.getElementById("newDishName").value = "";
-      document.getElementById("newDishPrice").value = "";
-      document.getElementById("newDishDesc").value = "";
-      document.getElementById("newDishImgs").value = "";
-      renderAdminDishes();
-      renderMenuGrid();
-      alert("Platillo agregado.");
+      const finishCreate = (finalImgs) => {
+        const nextId = dishes.length ? Math.max(...dishes.map(x => x.id)) + 1 : 1;
+        dishes.push({
+          id: nextId,
+          name,
+          price,
+          unitPrice: Math.max(10, Math.round(price / 5)),
+          category,
+          description,
+          images: finalImgs.length ? finalImgs : [FALLBACK_FOOD]
+        });
+        persistAll();
+        document.getElementById("newDishName").value = "";
+        document.getElementById("newDishPrice").value = "";
+        document.getElementById("newDishDesc").value = "";
+        document.getElementById("newDishImgs").value = "";
+        fileInput.value = "";
+        renderAdminDishes();
+        renderMenuGrid();
+        alert("Platillo agregado.");
+      };
+
+      const files = Array.from(fileInput.files || []);
+      if (files.length) {
+        Promise.all(files.map(file => new Promise(res => {
+          const r = new FileReader();
+          r.onload = e => res(e.target.result);
+          r.readAsDataURL(file);
+        }))).then(uploaded => finishCreate(typedImgs.concat(uploaded)));
+      } else {
+        finishCreate(typedImgs);
+      }
     }
 
     function resetAllDefaults() {
-      if (!confirm("¿Restaurar logo, promoción y menú originales?")) return;
+      if (!confirm("¿Restaurar logo, las 3 promociones y el menú originales?")) return;
       logoPath = "logo.png";
-      promoConfig = JSON.parse(JSON.stringify(INITIAL_PROMO));
+      promosList = JSON.parse(JSON.stringify(INITIAL_PROMOS));
+      activePromoIndex = 0;
       dishes = JSON.parse(JSON.stringify(INITIAL_DISHES));
       persistAll();
       renderHeaderLogo();
