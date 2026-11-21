@@ -28,7 +28,6 @@
       background-color: var(--bg-dark);
     }
 
-    /* FONDO DE MADERA CAFÉ TENUE Y ESTÁTICO AL NAVEGAR */
     body::before {
       content: "";
       position: fixed;
@@ -59,7 +58,6 @@
       padding: 0 12px 135px;
     }
 
-    /* FRANJA SUPERIOR */
     .top-pattern-bar {
       height: 10px;
       margin: 0 -12px 8px;
@@ -74,7 +72,6 @@
       border-bottom: 1px solid rgba(250, 204, 21, 0.3);
     }
 
-    /* HEADER */
     .topbar {
       display: flex;
       align-items: center;
@@ -154,7 +151,6 @@
       cursor: pointer;
     }
 
-    /* BANNER PROMOCIÓN DEL DÍA */
     .hero-banner {
       position: relative;
       border-radius: 0;
@@ -233,7 +229,6 @@
       width: 14px;
     }
 
-    /* BOTONES DE CATEGORÍA */
     .category-bar {
       display: flex;
       gap: 8px;
@@ -271,7 +266,6 @@
       font-weight: 500;
     }
 
-    /* CUADRÍCULA 2 PRODUCTOS POR FILA: SOLO IMAGEN RECTA SIN MARCO */
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -334,7 +328,6 @@
       color: var(--gold);
     }
 
-    /* FRANJA INFORMATIVA */
     .info-strip {
       margin-top: 18px;
       padding: 12px 8px;
@@ -389,7 +382,6 @@
       line-height: 1.2;
     }
 
-    /* BARRA INFERIOR FLOTANTE */
     .floating-cart-wrap {
       position: fixed;
       left: 0;
@@ -468,8 +460,7 @@
       flex-shrink: 0;
     }
 
-    /* VENTANA CASI A PANTALLA COMPLETA */
-    .detail-backdrop {
+    .detail-backdrop, .sheet-backdrop {
       position: fixed;
       inset: 0;
       background: rgba(0, 0, 0, 0.88);
@@ -481,7 +472,13 @@
       padding: 12px;
     }
 
-    .detail-backdrop.open {
+    .sheet-backdrop {
+      z-index: 70;
+      align-items: flex-end;
+      padding: 0;
+    }
+
+    .detail-backdrop.open, .sheet-backdrop.open {
       display: flex;
     }
 
@@ -544,7 +541,7 @@
       flex: 0 0 100%;
       width: 100%;
       height: 100%;
-      scroll-snap-align: center;
+      scroll-snap-align: start;
     }
 
     .carousel-slide img {
@@ -683,22 +680,6 @@
       font-weight: 500;
       letter-spacing: 0.03em;
       cursor: pointer;
-    }
-
-    /* MODALES CHECKOUT Y ADMIN */
-    .sheet-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(6px);
-      z-index: 70;
-      display: none;
-      align-items: flex-end;
-      justify-content: center;
-    }
-
-    .sheet-backdrop.open {
-      display: flex;
     }
 
     .sheet-panel {
@@ -897,13 +878,19 @@
       margin-bottom: 8px;
       font-size: 12.5px;
     }
+
+    .upload-status {
+      font-size: 11px;
+      color: #4ade80;
+      margin-top: 4px;
+      min-height: 14px;
+    }
   </style>
 </head>
 <body>
   <div class="top-pattern-bar"></div>
 
   <div class="app-shell">
-    <!-- HEADER -->
     <header class="topbar">
       <div class="logo-slot">
         <img
@@ -931,11 +918,10 @@
       </div>
     </header>
 
-    <!-- BANNER PROMOCIÓN DEL DÍA -->
     <section class="hero-banner" id="promoBanner" onclick="openPromoModal()">
       <img
         id="promoBannerImg"
-        src="promo.jpg"
+        src="Promo Tacos Pastor.jpg"
         alt="Promoción del día"
         onerror="this.src='https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?auto=format&fit=crop&w=900&q=80'"
       />
@@ -944,14 +930,9 @@
         <h1 class="hero-heading" id="promoHeadingTxt">Jueves de Pastor</h1>
         <span class="hero-offer" id="promoOfferTxt">6 tacos x $60</span>
       </div>
-      <div class="hero-dots" id="promoDots">
-        <span class="active"></span>
-        <span></span>
-        <span></span>
-      </div>
+      <div class="hero-dots" id="promoDots"></div>
     </section>
 
-    <!-- BOTONES DE CATEGORÍA FUNCIONALES -->
     <nav class="category-bar" id="categoryBar">
       <button class="cat-btn active" type="button" data-cat="Tacos">Tacos</button>
       <button class="cat-btn" type="button" data-cat="Especialidades">Especialidades</button>
@@ -960,10 +941,8 @@
       <button class="cat-btn" type="button" data-cat="Bebidas">Bebidas</button>
     </nav>
 
-    <!-- PRODUCTOS (2 POR FILA, RECTOS SIN MARCO) -->
     <main class="menu-grid" id="menuGrid"></main>
 
-    <!-- INFORMACIÓN DE HORARIO, UBICACIÓN Y CALIDAD -->
     <section class="info-strip">
       <div class="info-col">
         <span class="info-icon">🕒</span>
@@ -985,7 +964,6 @@
     </section>
   </div>
 
-  <!-- BARRA INFERIOR FLOTANTE -->
   <div class="floating-cart-wrap">
     <div class="floating-cart-bar">
       <div class="cart-left" onclick="openCheckout()">
@@ -1007,7 +985,6 @@
     </div>
   </div>
 
-  <!-- VENTANA CASI A PANTALLA COMPLETA -->
   <div class="detail-backdrop" id="detailModal">
     <div class="detail-window">
       <div class="detail-top-bar">
@@ -1050,7 +1027,6 @@
     </div>
   </div>
 
-  <!-- MODAL DE PEDIDO -->
   <div class="sheet-backdrop" id="checkoutModal">
     <div class="sheet-panel">
       <div class="sheet-head">
@@ -1090,29 +1066,27 @@
     </div>
   </div>
 
-  <!-- MODAL ADMIN (CONTRASEÑA 1234) -->
   <div class="sheet-backdrop" id="adminModal">
     <div class="sheet-panel">
       <div class="sheet-head">
         <h3>Administración</h3>
         <button class="close-circle" type="button" onclick="closeSheet('adminModal')">×</button>
       </div>
+      <div id="adminUploadStatus" class="upload-status" style="margin-bottom:10px;"></div>
 
-      <!-- LOGO SUPERIOR -->
       <div class="admin-card">
         <span style="color:var(--gold);display:block;margin-bottom:8px;font-size:12.5px;">Logo Superior</span>
         <div class="form-field">
-          <label>Subir archivo de logo (se comprime automáticamente)</label>
+          <label>Subir logo</label>
           <input type="file" accept="image/*" class="input-dark" onchange="uploadLogoFile(this)" />
         </div>
         <div class="form-field">
-          <label>O ruta / URL del logo</label>
+          <label>O nombre / URL del logo</label>
           <input type="text" id="adminLogoUrl" class="input-dark" placeholder="logo.png o https://..." />
         </div>
         <button class="btn-action btn-gold" type="button" onclick="saveAdminLogo()">Guardar Logo</button>
       </div>
 
-      <!-- 3 OPCIONES DE PROMOCIÓN PARA DIFERENTES DÍAS -->
       <div class="admin-card">
         <span style="color:var(--gold);display:block;margin-bottom:8px;font-size:12.5px;">Ofertas del Día (3 Días / Opciones)</span>
 
@@ -1125,22 +1099,22 @@
         <div class="grid-2">
           <div class="form-field">
             <label>Etiqueta / Día</label>
-            <input type="text" id="adminPromoKicker" class="input-dark" placeholder="Ej. PROMOCIÓN DEL DÍA" />
+            <input type="text" id="adminPromoKicker" class="input-dark" />
           </div>
           <div class="form-field">
             <label>Precio promo ($ MXN)</label>
-            <input type="number" id="adminPromoPrice" class="input-dark" placeholder="60" />
+            <input type="number" id="adminPromoPrice" class="input-dark" />
           </div>
         </div>
 
         <div class="form-field">
           <label>Título de la promoción</label>
-          <input type="text" id="adminPromoTitle" class="input-dark" placeholder="Ej. Jueves de Pastor" />
+          <input type="text" id="adminPromoTitle" class="input-dark" />
         </div>
 
         <div class="form-field">
           <label>Texto de oferta</label>
-          <input type="text" id="adminPromoOffer" class="input-dark" placeholder="Ej. 6 tacos x $60" />
+          <input type="text" id="adminPromoOffer" class="input-dark" />
         </div>
 
         <div class="form-field">
@@ -1152,14 +1126,13 @@
           <label>Imágenes del carrete de esta promoción</label>
           <div class="thumbs-strip" id="promoThumbsStrip"></div>
           <input type="file" accept="image/*" multiple class="input-dark" onchange="addPromoFiles(this)" />
-          <input type="text" id="adminPromoGallery" class="input-dark" style="margin-top:6px;" placeholder="promo.jpg, foto2.jpg" />
+          <input type="text" id="adminPromoGallery" class="input-dark" style="margin-top:6px;" placeholder="Promo Tacos Pastor.jpg" />
         </div>
 
         <button class="btn-action btn-gold" type="button" onclick="saveCurrentPromoSlot()">Guardar esta Promoción</button>
         <button class="btn-action btn-outline-gold" type="button" onclick="activateCurrentPromoSlot()">Mostrar esta Promoción en el Banner</button>
       </div>
 
-      <!-- AGREGAR PRODUCTO -->
       <div class="admin-card">
         <span style="color:var(--gold);display:block;margin-bottom:8px;font-size:12.5px;">Nuevo Platillo</span>
         <div class="grid-2">
@@ -1193,13 +1166,12 @@
           </div>
         </div>
         <div class="form-field">
-          <label>O nombres/URLs de fotos (separadas por coma)</label>
-          <input type="text" id="newDishImgs" class="input-dark" placeholder="foto1.jpg, foto2.jpg" />
+          <label>O nombres de archivos en GitHub (separados por coma)</label>
+          <input type="text" id="newDishImgs" class="input-dark" placeholder="Torta Bisteck.jpg" />
         </div>
         <button class="btn-action btn-gold" type="button" onclick="createNewDish()">+ Guardar Platillo</button>
       </div>
 
-      <!-- EDITAR PRODUCTOS EXISTENTES -->
       <span style="display:block;margin-bottom:8px;color:var(--gold);font-size:12.5px;">Editar Platillos Existentes</span>
       <div id="adminDishesContainer"></div>
 
@@ -1219,8 +1191,8 @@
         title: "Jueves de Pastor",
         offer: "6 tacos x $60",
         price: 60,
-        description: "Promoción del día: 6 tacos al pastor con piña, cebolla, cilantro y salsa de la casa.",
-        images: ["promo.jpg", "orden-pastor.jpg", "kilo-pastor.jpg"]
+        description: "Promoción del día: tacos al pastor con piña, cebolla, cilantro y salsa de la casa.",
+        images: ["Promo Tacos Pastor.jpg", "Kilo de pastor.jpg"]
       },
       {
         id: 1,
@@ -1229,7 +1201,7 @@
         offer: "Paquete Familiar $350",
         price: 350,
         description: "Charola familiar con carne, queso fundido, jamón y aguacate lista para compartir.",
-        images: ["paquete-familiar.jpg", "kilo-pastor.jpg"]
+        images: ["Familiar.jpg", "Kilo de pastor.jpg"]
       },
       {
         id: 2,
@@ -1238,28 +1210,28 @@
         offer: "Kilo de Pastor $350",
         price: 350,
         description: "1 kilo de carne al pastor con verdura a un lado, tortillas calientitas y salsas.",
-        images: ["kilo-pastor.jpg", "orden-pastor.jpg"]
+        images: ["Kilo de pastor.jpg", "Promo Tacos Pastor.jpg"]
       }
     ];
 
     const INITIAL_DISHES = [
       {
         id: 1,
-        name: "Orden de Pastor",
+        name: "Tacos al Pastor",
         price: 60,
         unitPrice: 12,
         category: "Tacos",
-        description: "Orden de 5 tacos al pastor con piña, cebolla, cilantro y limón. También puedes pedir por taco individual.",
-        images: ["orden-pastor.jpg", "promo.jpg"]
+        description: "Tacos al pastor con piña, cebolla, cilantro y limón. Puedes pedir por taco individual o por orden de 5 tacos.",
+        images: ["Promo Tacos Pastor.jpg", "Kilo de pastor.jpg"]
       },
       {
         id: 2,
-        name: "Tacos de Bistec",
+        name: "Torta de Bisteck",
         price: 65,
         unitPrice: 13,
         category: "Tacos",
-        description: "Bistec asado en plancha con cebolla, cilantro y salsa verde o roja al gusto.",
-        images: ["tacos-bistec.jpg", "orden-pastor.jpg"]
+        description: "Torta con bistec asado, guarnición y salsas de la casa.",
+        images: ["Torta Bisteck.jpg"]
       },
       {
         id: 3,
@@ -1267,47 +1239,15 @@
         price: 350,
         category: "Especialidades",
         description: "Charola familiar con carne, queso fundido, jamón y aguacate, lista para compartir.",
-        images: ["paquete-familiar.jpg", "kilo-pastor.jpg"]
+        images: ["Familiar.jpg", "Kilo de pastor.jpg"]
       },
       {
         id: 4,
-        name: "Gringas al Pastor",
-        price: 45,
-        category: "Especialidades",
-        description: "Tortilla de harina dorada con queso derretido, pastor y piña.",
-        images: ["gringas.jpg", "torta-pastor.jpg"]
-      },
-      {
-        id: 5,
-        name: "Torta de Pastor",
-        price: 55,
-        category: "Especialidades",
-        description: "Pan dorado relleno de pastor, queso y guarnición tradicional.",
-        images: ["torta-pastor.jpg", "gringas.jpg"]
-      },
-      {
-        id: 6,
         name: "Kilo de Pastor",
         price: 350,
         category: "Kilos",
-        description: "1 kilo de carne al pastor con verdura a un lado, tortillas y salsas.",
-        images: ["kilo-pastor.jpg", "orden-pastor.jpg"]
-      },
-      {
-        id: 7,
-        name: "Rebanada de Pastel",
-        price: 55,
-        category: "Postres",
-        description: "Porción individual de pastel casero para acompañar tu pedido.",
-        images: ["postre.jpg"]
-      },
-      {
-        id: 8,
-        name: "Refresco 600 ml",
-        price: 25,
-        category: "Bebidas",
-        description: "Bebida fría bien helada para tu orden.",
-        images: ["refresco.jpg"]
+        description: "1 kilo de carne al pastor con verdura, tortillas y salsas.",
+        images: ["Kilo de pastor.jpg", "Promo Tacos Pastor.jpg"]
       }
     ];
 
@@ -1325,7 +1265,13 @@
     let detailQty = 1;
     let detailUnitMode = false;
 
-    // Comprimir imagen desde galería para que quepa en localStorage sin fallar
+    function setUploadStatus(msg, isError = false) {
+      const el = document.getElementById("adminUploadStatus");
+      if (!el) return;
+      el.style.color = isError ? "#f87171" : "#4ade80";
+      el.textContent = msg;
+    }
+
     function compressImageFile(file, maxWidth = 720, quality = 0.72) {
       return new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -1356,7 +1302,7 @@
         localStorage.setItem("tz_dishes_cfg", JSON.stringify(dishes));
         return true;
       } catch (err) {
-        alert("El almacenamiento del navegador está lleno por las fotos subidas. Quita alguna foto pesada o usa nombre de archivo/URL.");
+        alert("El espacio local del navegador está lleno. Usa nombres de archivo del repositorio (como Familiar.jpg) en lugar de subir muchas fotos pesadas.");
         return false;
       }
     }
@@ -1381,7 +1327,7 @@
       document.getElementById("promoKickerTxt").textContent = p.kicker || "PROMOCIÓN DEL DÍA";
       document.getElementById("promoHeadingTxt").textContent = p.title || "Promoción del Día";
       document.getElementById("promoOfferTxt").textContent = p.offer || "";
-      document.getElementById("promoBannerImg").src = (p.images && p.images[0]) || "promo.jpg";
+      document.getElementById("promoBannerImg").src = (p.images && p.images[0]) || "Promo Tacos Pastor.jpg";
 
       const dotsWrap = document.getElementById("promoDots");
       dotsWrap.innerHTML = promosList.map((_, i) =>
@@ -1440,7 +1386,7 @@
 
     function openPromoModal() {
       const p = getActivePromo();
-      const imgs = (p.images && p.images.length) ? p.images : ["promo.jpg"];
+      const imgs = (p.images && p.images.length) ? p.images : ["Promo Tacos Pastor.jpg"];
       activeDetailItem = {
         id: "promo_" + p.id,
         name: `${p.title} (${p.offer})`,
@@ -1460,9 +1406,7 @@
       document.getElementById("detailCatLabel").textContent = item.category;
       document.getElementById("detailTitle").textContent = item.name;
       document.getElementById("detailDesc").textContent = item.description;
-
-      const isTaco = item.category === "Tacos";
-      document.getElementById("tacoOptionsRow").style.display = isTaco ? "grid" : "none";
+      document.getElementById("tacoOptionsRow").style.display = item.category === "Tacos" ? "grid" : "none";
 
       const track = document.getElementById("carouselTrack");
       const dots = document.getElementById("carouselDots");
@@ -1497,13 +1441,8 @@
 
     function addTacoUnits(units) {
       if (!activeDetailItem) return;
-      if (units === 1) {
-        detailUnitMode = true;
-        detailQty = (detailQty || 0) + 1;
-      } else {
-        detailUnitMode = false;
-        detailQty = (detailQty || 0) + 1;
-      }
+      detailUnitMode = units === 1;
+      detailQty = (detailQty || 0) + 1;
       updateDetailQtyUI();
     }
 
@@ -1548,16 +1487,8 @@
       const cartKey = `${activeDetailItem.id}_${isSingleTaco ? "unit" : "pack"}`;
 
       const existing = cart.find(c => c.key === cartKey);
-      if (existing) {
-        existing.qty += detailQty;
-      } else {
-        cart.push({
-          key: cartKey,
-          name: itemName,
-          price: itemPrice,
-          qty: detailQty
-        });
-      }
+      if (existing) existing.qty += detailQty;
+      else cart.push({ key: cartKey, name: itemName, price: itemPrice, qty: detailQty });
 
       refreshCartBar();
       closeDetailModal();
@@ -1687,18 +1618,15 @@
       window.open(`https://wa.me/${recipient}?text=${encodeURIComponent(msg)}`, "_blank");
     }
 
-    // ADMIN CON CONTRASEÑA 1234
     function askAdminPassword() {
       const input = prompt("Contraseña de administrador:");
       if (input === null) return;
-      if (input === ADMIN_PASS) {
-        openAdminSheet();
-      } else {
-        alert("Contraseña incorrecta.");
-      }
+      if (input === ADMIN_PASS) openAdminSheet();
+      else alert("Contraseña incorrecta.");
     }
 
     function openAdminSheet() {
+      setUploadStatus("Listo para editar");
       document.getElementById("adminLogoUrl").value = logoPath;
       editingPromoSlot = activePromoIndex;
       loadPromoSlotIntoForm(editingPromoSlot);
@@ -1708,9 +1636,6 @@
 
     function selectPromoSlot(slotIdx) {
       editingPromoSlot = slotIdx;
-      document.querySelectorAll("#promoSlotTabs .promo-slot-btn").forEach((b, i) => {
-        b.classList.toggle("active", i === slotIdx);
-      });
       loadPromoSlotIntoForm(slotIdx);
     }
 
@@ -1753,10 +1678,9 @@
     async function addPromoFiles(input) {
       const files = Array.from(input.files || []);
       if (!files.length) return;
-      const compressed = await Promise.all(files.map(f => compressImageFile(f, 760, 0.72)));
+      const compressed = await Promise.all(files.map(f => compressImageFile(f, 720, 0.72)));
       const slot = promosList[editingPromoSlot];
-      const typed = document.getElementById("adminPromoGallery").value
-        .split(",").map(s => s.trim()).filter(Boolean);
+      const typed = document.getElementById("adminPromoGallery").value.split(",").map(s => s.trim()).filter(Boolean);
       slot.images = typed.concat(compressed);
       document.getElementById("adminPromoGallery").value = slot.images.join(", ");
       renderPromoThumbs(slot.images);
@@ -1767,15 +1691,13 @@
 
     function saveCurrentPromoSlot() {
       const slot = promosList[editingPromoSlot];
-      const typedImgs = document.getElementById("adminPromoGallery").value
-        .split(",").map(s => s.trim()).filter(Boolean);
-
+      const typedImgs = document.getElementById("adminPromoGallery").value.split(",").map(s => s.trim()).filter(Boolean);
       slot.kicker = document.getElementById("adminPromoKicker").value.trim() || "PROMOCIÓN DEL DÍA";
       slot.price = Number(document.getElementById("adminPromoPrice").value) || 60;
       slot.title = document.getElementById("adminPromoTitle").value.trim() || "Promoción";
       slot.offer = document.getElementById("adminPromoOffer").value.trim() || "";
       slot.description = document.getElementById("adminPromoDesc").value.trim() || "";
-      slot.images = typedImgs.length ? typedImgs : ["promo.jpg"];
+      slot.images = typedImgs.length ? typedImgs : ["Promo Tacos Pastor.jpg"];
 
       if (persistAll()) {
         if (editingPromoSlot === activePromoIndex) renderPromoBanner();
@@ -1786,14 +1708,13 @@
 
     function activateCurrentPromoSlot() {
       const slot = promosList[editingPromoSlot];
-      const typedImgs = document.getElementById("adminPromoGallery").value
-        .split(",").map(s => s.trim()).filter(Boolean);
+      const typedImgs = document.getElementById("adminPromoGallery").value.split(",").map(s => s.trim()).filter(Boolean);
       slot.kicker = document.getElementById("adminPromoKicker").value.trim() || "PROMOCIÓN DEL DÍA";
       slot.price = Number(document.getElementById("adminPromoPrice").value) || 60;
       slot.title = document.getElementById("adminPromoTitle").value.trim() || "Promoción";
       slot.offer = document.getElementById("adminPromoOffer").value.trim() || "";
       slot.description = document.getElementById("adminPromoDesc").value.trim() || "";
-      slot.images = typedImgs.length ? typedImgs : ["promo.jpg"];
+      slot.images = typedImgs.length ? typedImgs : ["Promo Tacos Pastor.jpg"];
       activePromoIndex = editingPromoSlot;
 
       if (persistAll()) {
@@ -1806,8 +1727,7 @@
     async function uploadLogoFile(input) {
       const f = input.files && input.files[0];
       if (!f) return;
-      const compressed = await compressImageFile(f, 450, 0.82);
-      document.getElementById("adminLogoUrl").value = compressed;
+      document.getElementById("adminLogoUrl").value = await compressImageFile(f, 450, 0.82);
     }
 
     function saveAdminLogo() {
@@ -1856,7 +1776,7 @@
               <label>Imágenes del platillo (toca × para quitar o sube nuevas)</label>
               <div class="thumbs-strip">${thumbs}</div>
               <input type="file" accept="image/*" multiple class="input-dark" onchange="uploadImagesToDish(${d.id}, this)" />
-              <input type="text" id="dImgs_${d.id}" class="input-dark" style="margin-top:6px;" value="${(d.images || []).join(", ")}" placeholder="foto1.jpg, foto2.jpg" />
+              <input type="text" id="dImgs_${d.id}" class="input-dark" style="margin-top:6px;" value="${(d.images || []).join(", ")}" />
             </div>
             <div class="grid-2">
               <button class="btn-action btn-gold" type="button" onclick="saveDishEdit(${d.id})">Guardar</button>
@@ -1872,12 +1792,9 @@
       if (!files.length) return;
       const dish = dishes.find(d => d.id === dishId);
       if (!dish) return;
-
       const addedImgs = await Promise.all(files.map(f => compressImageFile(f, 700, 0.72)));
-      const currentText = (document.getElementById(`dImgs_${dishId}`)?.value || "")
-        .split(",").map(s => s.trim()).filter(Boolean);
+      const currentText = (document.getElementById(`dImgs_${dishId}`)?.value || "").split(",").map(s => s.trim()).filter(Boolean);
       dish.images = currentText.concat(addedImgs);
-
       if (persistAll()) {
         renderAdminDishes();
         renderMenuGrid();
@@ -1904,7 +1821,6 @@
       dishes[idx].category = document.getElementById(`dCat_${id}`).value;
       const imgs = document.getElementById(`dImgs_${id}`).value.split(",").map(s => s.trim()).filter(Boolean);
       if (imgs.length) dishes[idx].images = imgs;
-
       if (persistAll()) {
         renderMenuGrid();
         alert("Platillo guardado.");
